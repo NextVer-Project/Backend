@@ -1,4 +1,4 @@
-﻿namespace NextVer.Api
+﻿namespace Backend
 {
     public class Startup
     {
