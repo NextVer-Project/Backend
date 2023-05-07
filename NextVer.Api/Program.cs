@@ -9,11 +9,10 @@ var configuration = builder.Configuration;
 
 var app = builder.Build();
 
-
 builder.Services.AddControllers();
 builder.Services.ConfigureSwagger();
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
-// Autoryzacja
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
