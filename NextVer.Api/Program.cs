@@ -12,6 +12,7 @@ var app = builder.Build();
 builder.Services.AddControllers();
 builder.Services.ConfigureSwagger();
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
+builder.Services.ConfigureDependencyInjection();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
