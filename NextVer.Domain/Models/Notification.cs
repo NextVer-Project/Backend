@@ -1,6 +1,6 @@
 ﻿namespace NextVer.Domain.Models
 {
-    public class Notifiction
+    public class Notification
     {
         public int Id { get; set; }
         public int UserId { get; set; }
@@ -13,7 +13,7 @@
         public virtual Movie Movie { get; set; }
         public virtual TvShow TvShow { get; set; }
         public virtual ProductionType ProductionType { get; set; }
-        public virtual NotifictionType NotifictionType { get; set; }
+        public virtual NotificationType NotificationType { get; set; }
     }
 }
 

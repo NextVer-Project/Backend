@@ -9,16 +9,18 @@ namespace NextVer.Domain.Models
         public string Title { get; set; }
         [Required]
         public string Description { get; set; }
-        public string TvShowCoverUrl { get; set; }
-        public string TvShowTrailerUrl { get; set; }
+        public string CoverUrl { get; set; }
+        public string TrailerUrl { get; set; }
         public int ProductionTypeId { get; set; }
         public bool IsApproved { get; set; }
+        public bool IsAvailable { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
         public int AddedByUser { get; set; }
+        public int ViewCounter { get; set; }
 
         public virtual User User { get; set; }
-        public virtual ICollection<Notifiction> Notifictions { get; set; }
+        public virtual ICollection<Notification> Notifications { get; set; }
         public virtual ICollection<Gallery> Galleries { get; set; }
         public virtual ICollection<Rating> Ratings { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }

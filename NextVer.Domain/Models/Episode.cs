@@ -14,18 +14,19 @@ namespace NextVer.Domain.Models
         public int EpisodeNumber { get; set; }
 
         [Required]
-        public string EpisodeTitle { get; set; }
+        public string Title { get; set; }
 
         [Required]
         public string Description { get; set; }
 
         [Required]
-        [Range(typeof(TimeSpan), "00:00:01", "02:59:59")]
-        public TimeSpan EpisodeDuration { get; set; }
+        public TimeSpan Duration { get; set; }
 
         [Required]
-        public DateTime EpisodeReleaseDate { get; set; }
-        public int AddeBy { get; set; }
+        public DateTime ReleaseDate { get; set; }
+        public bool IsApproved { get; set; }
+        public int AddedByUser { get; set; }
+        public int ViewCounter { get; set; }
 
         public virtual User User { get; set; }
         public virtual TvShow TvShow { get; set; }

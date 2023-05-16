@@ -3,8 +3,8 @@
     public class TechnologyType
     {
         public int Id { get; set; }
-        public string TechnologyTypeName { get; set; }
-        public string TechnologyTypeDescription { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
 
         public virtual ICollection<Technology> Technologies { get; set; }
     }

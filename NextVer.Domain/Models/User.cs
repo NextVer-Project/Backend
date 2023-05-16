@@ -22,7 +22,6 @@ namespace NextVer.Domain.Models
         [Required]
         public byte[] PasswordSalt { get; set; }
         public int UserTypeId { get; set; }
-        public virtual UserType UserType { get; set; }
         public string? UserLogoUrl { get; set; }
         public bool IsVerified { get; set; }
         public bool IsDeleted { get; set; }
@@ -32,13 +31,15 @@ namespace NextVer.Domain.Models
         [Encrypted]
         public string RegistrationToken { get; set; }
         public DateTime RegistrationTokenGeneratedTime { get; set; }
+        public int Points { get; set; }
 
+        public virtual UserType UserType { get; set; }
         public virtual ICollection<ProductionVersion> Productions { get; set; }
         public virtual ICollection<Movie> Movies { get; set; }
         public virtual ICollection<TvShow> TvShows { get; set; }
         public virtual ICollection<Episode> Episodes { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
-        public virtual ICollection<Notifiction> Notifictions { get; set; }
+        public virtual ICollection<Notification> Notifications { get; set; }
         public virtual ICollection<Rating> Ratings { get; set; }
         public virtual ICollection<UserCollection> UserCollections { get; set; }
         /*

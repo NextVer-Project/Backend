@@ -3,8 +3,8 @@
     public class UserCollectionType
     {
         public int Id { get; set; }
-        public string UserCollectionTypeName { get; set; }
-        public string UserCollectionTypeDescription { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
 
         public virtual ICollection<UserCollection> UserCollections { get; set; }
     }

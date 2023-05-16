@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace NextVer.Domain.Models
+﻿namespace NextVer.Domain.Models
 {
     public class Rating
     {
@@ -9,7 +7,6 @@ namespace NextVer.Domain.Models
         public int RatingCategoryId { get; set; }
         public int IdMovieTVSerieGame { get; set; }
         public int ProductionTypeId { get; set; }
-        [Range(typeof(int), "0.1", "10")]
         public int RatingValue { get; set; }
         public DateTime CreatedAt { get; set; }
 

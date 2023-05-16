@@ -9,9 +9,11 @@
         public string LinkToProductionVersion { get; set; }
         public DateTime ReleasedDate { get; set; }
         public bool IsApproved { get; set; }
+        public bool IsAvailable { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
         public int AddedBy { get; set; }
+        public int ViewCounter { get; set; }
 
         public virtual User User { get; set; }
         public virtual ReleasePlace ReleasePlace { get; set; }
