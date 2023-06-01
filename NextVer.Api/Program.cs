@@ -1,18 +1,19 @@
-using NextVerBackend.Configuration;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using NextVer.Infrastructure.Persistance;
+using NextVerBackend.Configuration;
+using System.Text;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 var configuration = builder.Configuration;
 
-var app = builder.Build();
-
 builder.Services.AddDbContext<NextVerDbContext>(options => options
     .UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
+var app = builder.Build();
 
 builder.Services.AddControllers();
 builder.Services.ConfigureSwagger();
