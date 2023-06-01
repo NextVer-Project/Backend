@@ -25,7 +25,7 @@ namespace NextVer.Domain.Models
         [Required]
         public DateTime ReleaseDate { get; set; }
         public bool IsApproved { get; set; }
-        public int AddedByUser { get; set; }
+        public int UserId { get; set; }
         public int ViewCounter { get; set; }
 
         public virtual User User { get; set; }
