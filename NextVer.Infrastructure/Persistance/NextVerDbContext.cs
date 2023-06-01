@@ -14,7 +14,9 @@ namespace NextVer.Infrastructure.Persistance
             base(options)
         {
             var encryptionKey = Convert.FromBase64String(configuration.GetSection("AppSettings:EncryptionKey").Value);
-            _provider = new AesProvider(encryptionKey, null);
+            var keyInfo = AesProvider.GenerateKey(AesKeySize.AES256Bits);
+            byte[] initializeVector = keyInfo.IV;
+            _provider = new AesProvider(encryptionKey, initializeVector);
         }
 
         public DbSet<User> Users { get; set; }
@@ -49,6 +51,14 @@ namespace NextVer.Infrastructure.Persistance
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.UseEncryption(_provider);
+
+            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+            {
+                if (relationship.Properties.Any(p => p.Name == "UserId"))
+                {
+                    relationship.DeleteBehavior = DeleteBehavior.Restrict;
+                }
+            }
 
             modelBuilder.Entity<MovieGenre>()
                 .HasKey(x => new { x.MovieId, x.GenreId });
