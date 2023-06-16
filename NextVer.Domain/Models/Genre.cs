@@ -7,7 +7,7 @@
         public string Description { get; set; }
 
         public virtual ICollection<MovieGenre> MovieGenres { get; set; }
-        public virtual ICollection<TvShowGenre> TvShowsGenres { get; set; }
+        public virtual ICollection<TvShowGenre> TvShowGenres { get; set; }
 
     }
 }

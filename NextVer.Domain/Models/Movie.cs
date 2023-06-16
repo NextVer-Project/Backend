@@ -23,11 +23,7 @@ namespace NextVer.Domain.Models
         public int ViewCounter { get; set; }
 
         public virtual User User { get; set; }
-        public virtual ICollection<Notification> Notifications { get; set; }
-        public virtual ICollection<Gallery> Galleries { get; set; }
-        public virtual ICollection<Rating> Ratings { get; set; }
-        public virtual ICollection<Comment> Comments { get; set; }
-        public virtual ICollection<MovieUniverse> MoviesUniverses { get; set; }
-        public virtual ICollection<MovieGenre> MoviesGenres { get; set; }
+        public virtual ICollection<MovieUniverse> MovieUniverses { get; set; }
+        public virtual ICollection<MovieGenre> MovieGenres { get; set; }
     }
 }

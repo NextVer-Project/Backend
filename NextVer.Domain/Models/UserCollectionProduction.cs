@@ -3,9 +3,9 @@
     public class UserCollectionProduction
     {
         public int UserCollectionId { get; set; }
-        public int ProductionId { get; set; }
+        public int ProductionVersionId { get; set; }
 
         public virtual UserCollection UserCollection { get; set; }
-        public virtual ProductionVersion Production { get; set; }
+        public virtual ProductionVersion ProductionVersion { get; set; }
     }
 }

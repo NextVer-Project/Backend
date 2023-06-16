@@ -8,6 +8,6 @@
         public string LogoUrl { get; set; }
 
         public virtual ICollection<User> Users { get; set; }
-        public virtual ICollection<Notification> Notifications { get; set; }
+        public virtual ICollection<NotificationType> NotificationTypes { get; set; }
     }
 }

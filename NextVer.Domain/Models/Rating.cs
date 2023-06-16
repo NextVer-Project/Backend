@@ -11,8 +11,6 @@
         public DateTime CreatedAt { get; set; }
 
         public virtual User User { get; set; }
-        public virtual Movie Movie { get; set; }
-        public virtual TvShow TvShow { get; set; }
         public virtual ProductionType ProductionType { get; set; }
         public virtual RatingCategory RatingCategory { get; set; }
     }

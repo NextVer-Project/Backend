@@ -42,15 +42,5 @@ namespace NextVer.Domain.Models
         public virtual ICollection<Notification> Notifications { get; set; }
         public virtual ICollection<Rating> Ratings { get; set; }
         public virtual ICollection<UserCollection> UserCollections { get; set; }
-        /*
-                public User()
-                {
-                    CreatedAt = DateTime.UtcNow;
-                    UpdatedAt = DateTime.UtcNow;
-                    UserTypeId = 0;
-                    IsVerified = false;
-                    IsDeleted = false;
-                    NotificationsAgreement = false;
-                }*/
     }
 }
