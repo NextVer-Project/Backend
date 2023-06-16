@@ -1,0 +1,27 @@
+[
+  {
+    "Name": "Administrator",
+    "Description": "Administrator role",
+    "LogoUrl": "https://example.com/admin_logo.png"
+  },
+  {
+    "Name": "Moderator",
+    "Description": "Moderator role",
+    "LogoUrl": "https://example.com/moderator_logo.png"
+  },
+  {
+    "Name": "User",
+    "Description": "Standard user role",
+    "LogoUrl": "https://example.com/user_logo.png"
+  },
+  {
+    "Name": "Guest",
+    "Description": "Guest role",
+    "LogoUrl": "https://example.com/guest_logo.png"
+  },
+  {
+    "Name": "VIP",
+    "Description": "VIP user role",
+    "LogoUrl": "https://example.com/vip_logo.png"
+  }
+]

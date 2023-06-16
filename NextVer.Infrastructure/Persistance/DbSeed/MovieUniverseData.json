@@ -1,0 +1,26 @@
+[
+  {
+    "MovieId": 1,
+    "UniverseId": 1
+  },
+  {
+    "MovieId": 1,
+    "UniverseId": 2
+  },
+  {
+    "MovieId": 1,
+    "UniverseId": 3
+  },
+  {
+    "MovieId": 2,
+    "UniverseId": 4
+  },
+  {
+    "MovieId": 2,
+    "UniverseId": 5
+  },
+  {
+    "MovieId": 2,
+    "UniverseId": 6
+  }
+]

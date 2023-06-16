@@ -1,0 +1,22 @@
+[
+  {
+    "Name": "Image",
+    "Description": "Type for image galleries."
+  },
+  {
+    "Name": "Video",
+    "Description": "Type for video galleries."
+  },
+  {
+    "Name": "Audio",
+    "Description": "Type for audio galleries."
+  },
+  {
+    "Name": "Document",
+    "Description": "Type for document galleries."
+  },
+  {
+    "Name": "Mixed",
+    "Description": "Type for mixed media galleries."
+  }
+]

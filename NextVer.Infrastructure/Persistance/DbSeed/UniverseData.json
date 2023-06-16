@@ -1,0 +1,67 @@
+[
+  {
+    "Name": "Marvel Cinematic Universe",
+    "Description": "A shared universe of superhero films and TV shows based on Marvel Comics.",
+    "LogoUrl": "https://example.com/marvel_logo.png"
+  },
+  {
+    "Name": "DC Extended Universe",
+    "Description": "A shared universe of superhero films based on DC Comics.",
+    "LogoUrl": "https://example.com/dc_logo.png"
+  },
+  {
+    "Name": "Star Wars",
+    "Description": "A fictional universe created by George Lucas, known for its space opera franchise.",
+    "LogoUrl": "https://example.com/star_wars_logo.png"
+  },
+  {
+    "Name": "Harry Potter",
+    "Description": "A fantasy universe created by J.K. Rowling, featuring the Wizarding World.",
+    "LogoUrl": "https://example.com/harry_potter_logo.png"
+  },
+  {
+    "Name": "The Lord of the Rings",
+    "Description": "A high fantasy universe created by J.R.R. Tolkien, known for its epic novels and film adaptations.",
+    "LogoUrl": "https://example.com/lotr_logo.png"
+  },
+  {
+    "Name": "The Matrix",
+    "Description": "A science fiction universe created by The Wachowskis, known for its groundbreaking film series.",
+    "LogoUrl": "https://example.com/matrix_logo.png"
+  },
+  {
+    "Name": "Jurassic Park",
+    "Description": "A sci-fi adventure universe featuring genetically resurrected dinosaurs.",
+    "LogoUrl": "https://example.com/jurassic_park_logo.png"
+  },
+  {
+    "Name": "James Bond",
+    "Description": "A spy film universe featuring the iconic character James Bond.",
+    "LogoUrl": "https://example.com/james_bond_logo.png"
+  },
+  {
+    "Name": "Fast & Furious",
+    "Description": "An action-packed universe centered around illegal street racing and heists.",
+    "LogoUrl": "https://example.com/fast_furious_logo.png"
+  },
+  {
+    "Name": "Transformers",
+    "Description": "A science fiction universe featuring sentient robots that can transform into vehicles and other objects.",
+    "LogoUrl": "https://example.com/transformers_logo.png"
+  },
+  {
+    "Name": "X-Men",
+    "Description": "A superhero universe based on the Marvel Comics' mutant characters known as X-Men.",
+    "LogoUrl": "https://example.com/xmen_logo.png"
+  },
+  {
+    "Name": "The Witcher",
+    "Description": "A fantasy universe created by Andrzej Sapkowski, known for its books, video games, and TV series.",
+    "LogoUrl": "https://example.com/witcher_logo.png"
+  },
+  {
+    "Name": "Avatar",
+    "Description": "A science fiction universe created by James Cameron, featuring the planet Pandora.",
+    "LogoUrl": "https://example.com/avatar_logo.png"
+  }
+]

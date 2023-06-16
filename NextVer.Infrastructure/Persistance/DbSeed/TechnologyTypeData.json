@@ -1,0 +1,18 @@
+[
+  {
+    "Name": "Audio",
+    "Description": "Technologies related to audio."
+  },
+  {
+    "Name": "Resolution",
+    "Description": "Technologies related to image resolution."
+  },
+  {
+    "Name": "HDR type",
+    "Description": "Technologies related to High Dynamic Range (HDR)."
+  },
+  {
+    "Name": "3D Mode",
+    "Description": "Technologies that enable three-dimensional image display."
+  }
+]

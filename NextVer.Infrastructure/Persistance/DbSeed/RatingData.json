@@ -1,0 +1,162 @@
+[
+  {
+    "UserId": 3,
+    "RatingCategoryId": 1,
+    "IdMovieTVSerieGame": 1,
+    "ProductionTypeId": 2,
+    "RatingValue": 4,
+    "CreatedAt": "2022-01-01T12:00:00"
+  },
+  {
+    "UserId": 1,
+    "RatingCategoryId": 1,
+    "IdMovieTVSerieGame": 1,
+    "ProductionTypeId": 2,
+    "RatingValue": 3,
+    "CreatedAt": "2022-02-01T15:30:00"
+  },
+  {
+    "UserId": 2,
+    "RatingCategoryId": 2,
+    "IdMovieTVSerieGame": 1,
+    "ProductionTypeId": 2,
+    "RatingValue": 5,
+    "CreatedAt": "2022-03-01T19:45:00"
+  },
+  {
+    "UserId": 3,
+    "RatingCategoryId": 3,
+    "IdMovieTVSerieGame": 1,
+    "ProductionTypeId": 2,
+    "RatingValue": 4,
+    "CreatedAt": "2022-04-01T08:15:00"
+  },
+  {
+    "UserId": 4,
+    "RatingCategoryId": 4,
+    "IdMovieTVSerieGame": 1,
+    "ProductionTypeId": 2,
+    "RatingValue": 2,
+    "CreatedAt": "2022-05-01T10:45:00"
+  },
+  {
+    "UserId": 3,
+    "RatingCategoryId": 5,
+    "IdMovieTVSerieGame": 1,
+    "ProductionTypeId": 2,
+    "RatingValue": 4,
+    "CreatedAt": "2022-06-01T14:20:00"
+  },
+  {
+    "UserId": 1,
+    "RatingCategoryId": 6,
+    "IdMovieTVSerieGame": 1,
+    "ProductionTypeId": 2,
+    "RatingValue": 3,
+    "CreatedAt": "2022-07-01T16:50:00"
+  },
+  {
+    "UserId": 2,
+    "RatingCategoryId": 7,
+    "IdMovieTVSerieGame": 1,
+    "ProductionTypeId": 2,
+    "RatingValue": 5,
+    "CreatedAt": "2022-08-01T21:10:00"
+  },
+  {
+    "UserId": 3,
+    "RatingCategoryId": 8,
+    "IdMovieTVSerieGame": 1,
+    "ProductionTypeId": 2,
+    "RatingValue": 4,
+    "CreatedAt": "2022-09-01T11:30:00"
+  },
+  {
+    "UserId": 4,
+    "RatingCategoryId": 9,
+    "IdMovieTVSerieGame": 1,
+    "ProductionTypeId": 2,
+    "RatingValue": 2,
+    "CreatedAt": "2022-10-01T13:45:00"
+  },
+  {
+    "UserId": 3,
+    "RatingCategoryId": 1,
+    "IdMovieTVSerieGame": 7,
+    "ProductionTypeId": 1,
+    "RatingValue": 4,
+    "CreatedAt": "2022-01-01T12:00:00"
+  },
+  {
+    "UserId": 1,
+    "RatingCategoryId": 1,
+    "IdMovieTVSerieGame": 6,
+    "ProductionTypeId": 1,
+    "RatingValue": 3,
+    "CreatedAt": "2022-02-01T15:30:00"
+  },
+  {
+    "UserId": 2,
+    "RatingCategoryId": 2,
+    "IdMovieTVSerieGame": 6,
+    "ProductionTypeId": 1,
+    "RatingValue": 5,
+    "CreatedAt": "2022-03-01T19:45:00"
+  },
+  {
+    "UserId": 3,
+    "RatingCategoryId": 3,
+    "IdMovieTVSerieGame": 2,
+    "ProductionTypeId": 1,
+    "RatingValue": 4,
+    "CreatedAt": "2022-04-01T08:15:00"
+  },
+  {
+    "UserId": 4,
+    "RatingCategoryId": 4,
+    "IdMovieTVSerieGame": 10,
+    "ProductionTypeId": 1,
+    "RatingValue": 2,
+    "CreatedAt": "2022-05-01T10:45:00"
+  },
+  {
+    "UserId": 3,
+    "RatingCategoryId": 5,
+    "IdMovieTVSerieGame": 5,
+    "ProductionTypeId": 1,
+    "RatingValue": 4,
+    "CreatedAt": "2022-06-01T14:20:00"
+  },
+  {
+    "UserId": 1,
+    "RatingCategoryId": 6,
+    "IdMovieTVSerieGame": 4,
+    "ProductionTypeId": 1,
+    "RatingValue": 3,
+    "CreatedAt": "2022-07-01T16:50:00"
+  },
+  {
+    "UserId": 2,
+    "RatingCategoryId": 7,
+    "IdMovieTVSerieGame": 3,
+    "ProductionTypeId": 1,
+    "RatingValue": 5,
+    "CreatedAt": "2022-08-01T21:10:00"
+  },
+  {
+    "UserId": 3,
+    "RatingCategoryId": 8,
+    "IdMovieTVSerieGame": 11,
+    "ProductionTypeId": 1,
+    "RatingValue": 4,
+    "CreatedAt": "2022-09-01T11:30:00"
+  },
+  {
+    "UserId": 4,
+    "RatingCategoryId": 9,
+    "IdMovieTVSerieGame": 2,
+    "ProductionTypeId": 1,
+    "RatingValue": 2,
+    "CreatedAt": "2022-10-01T13:45:00"
+  }
+]

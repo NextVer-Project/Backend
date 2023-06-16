@@ -1,0 +1,98 @@
+[
+  {
+    "TvShowId": 1,
+    "SeasonNumber": 1,
+    "EpisodeNumber": 1,
+    "Title": "The Vanishing of Will Byers",
+    "Description": "On his way home from a friend's house, young Will Byers mysteriously disappears. As the town of Hawkins, Indiana, unravels the mystery, they uncover a series of extraordinary events and a government conspiracy.",
+    "Duration": "01:03:00",
+    "ReleaseDate": "2016-07-15T00:00:00",
+    "IsApproved": true,
+    "UserId": 4,
+    "ViewCounter": 0
+  },
+  {
+    "TvShowId": 1,
+    "SeasonNumber": 1,
+    "EpisodeNumber": 2,
+    "Title": "The Weirdo on Maple Street",
+    "Description": "As the search for Will continues, Mike, Dustin, and Lucas stumble upon a girl with telekinetic powers named Eleven. Meanwhile, Joyce receives a series of mysterious phone calls.",
+    "Duration": "00:55:00",
+    "ReleaseDate": "2016-07-15T00:00:00",
+    "IsApproved": true,
+    "UserId": 4,
+    "ViewCounter": 0
+  },
+  {
+    "TvShowId": 1,
+    "SeasonNumber": 1,
+    "EpisodeNumber": 3,
+    "Title": "Holly, Jolly",
+    "Description": "While Joyce tries to make contact with Will, Chief Hopper questions an anxious Joyce about an unsettling phone call. Meanwhile, the boys use Eleven's powers to find Will.",
+    "Duration": "00:50:00",
+    "ReleaseDate": "2016-07-15T00:00:00",
+    "IsApproved": true,
+    "UserId": 4,
+    "ViewCounter": 0
+  },
+  {
+    "TvShowId": 1,
+    "SeasonNumber": 1,
+    "EpisodeNumber": 4,
+    "Title": "The Body",
+    "Description": "Refusing to believe Will is dead, Joyce tries to connect with him. The boys give Eleven a makeover. Nancy and Jonathan form an unlikely alliance.",
+    "Duration": "00:55:00",
+    "ReleaseDate": "2016-07-15T00:00:00",
+    "IsApproved": true,
+    "UserId": 4,
+    "ViewCounter": 0
+  },
+  {
+    "TvShowId": 1,
+    "SeasonNumber": 1,
+    "EpisodeNumber": 5,
+    "Title": "The Flea and the Acrobat",
+    "Description": "Hopper breaks into the lab while Nancy and Jonathan confront the force that took Will. The boys ask Mr. Clarke how to travel to another dimension.",
+    "Duration": "00:55:00",
+    "ReleaseDate": "2016-07-15T00:00:00",
+    "IsApproved": true,
+    "UserId": 4,
+    "ViewCounter": 0
+  },
+  {
+    "TvShowId": 1,
+    "SeasonNumber": 1,
+    "EpisodeNumber": 6,
+    "Title": "The Monster",
+    "Description": "A frantic Jonathan looks for Nancy in the darkness, but Steve's looking for her too. Hopper and Joyce uncover the truth about the lab's experiments.",
+    "Duration": "00:50:00",
+    "ReleaseDate": "2016-07-15T00:00:00",
+    "IsApproved": true,
+    "UserId": 4,
+    "ViewCounter": 0
+  },
+  {
+    "TvShowId": 1,
+    "SeasonNumber": 1,
+    "EpisodeNumber": 7,
+    "Title": "The Bathtub",
+    "Description": "Eleven struggles to reach Will, while Lucas warns his friends about the government's plans. Nancy and Jonathan show the police what Jonathan caught on camera.",
+    "Duration": "00:55:00",
+    "ReleaseDate": "2016-07-15T00:00:00",
+    "IsApproved": true,
+    "UserId": 4,
+    "ViewCounter": 0
+  },
+  {
+    "TvShowId": 1,
+    "SeasonNumber": 1,
+    "EpisodeNumber": 8,
+    "Title": "The Upside Down",
+    "Description": "Dr. Brenner holds Hopper and Joyce for questioning while the boys wait with Eleven in the gym. Back at Will's, Nancy and Jonathan prepare for battle.",
+    "Duration": "00:55:00",
+    "ReleaseDate": "2016-07-15T00:00:00",
+    "IsApproved": true,
+    "UserId": 4,
+    "ViewCounter": 0
+  }
+]

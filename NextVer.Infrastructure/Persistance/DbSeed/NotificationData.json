@@ -1,0 +1,51 @@
+[
+  {
+    "UserId": 1,
+    "NotificationTypeId": 2,
+    "IdMovieTVSerieGame": 1,
+    "ProductionTypeId": 2,
+    "CreatedAt": "2023-07-15T09:30:00"
+  },
+  {
+    "UserId": 1,
+    "NotificationTypeId": 4,
+    "IdMovieTVSerieGame": 2,
+    "ProductionTypeId": 1,
+    "CreatedAt": "2023-04-15T09:30:00"
+  },
+  {
+    "UserId": 3,
+    "NotificationTypeId": 3,
+    "IdMovieTVSerieGame": 1,
+    "ProductionTypeId": 1,
+    "CreatedAt": "2023-03-15T09:30:00"
+  },
+  {
+    "UserId": 1,
+    "NotificationTypeId": 2,
+    "IdMovieTVSerieGame": 5,
+    "ProductionTypeId": 1,
+    "CreatedAt": "2023-02-15T09:30:00"
+  },
+  {
+    "UserId": 3,
+    "NotificationTypeId": 1,
+    "IdMovieTVSerieGame": 3,
+    "ProductionTypeId": 1,
+    "CreatedAt": "2023-01-15T09:30:00"
+  },
+  {
+    "UserId": 1,
+    "NotificationTypeId": 2,
+    "IdMovieTVSerieGame": 2,
+    "ProductionTypeId": 1,
+    "CreatedAt": "2023-09-15T09:30:00"
+  },
+  {
+    "UserId": 3,
+    "NotificationTypeId": 1,
+    "IdMovieTVSerieGame": 2,
+    "ProductionTypeId": 2,
+    "CreatedAt": "2023-08-15T09:30:00"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "Name": "Favorites",
+    "Description": "A collection of favorite items."
+  },
+  {
+    "Name": "Watchlist",
+    "Description": "A collection of items to watch later."
+  },
+  {
+    "Name": "Owned",
+    "Description": "A collection of items owned by the user."
+  },
+  {
+    "Name": "Wishlist",
+    "Description": "A collection of items the user wishes to have."
+  },
+  {
+    "Name": "Recommended",
+    "Description": "A collection of recommended items for the user."
+  }
+]

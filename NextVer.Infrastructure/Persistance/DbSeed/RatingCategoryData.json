@@ -1,0 +1,42 @@
+[
+  {
+    "Name": "Sound Quality",
+    "Description": "Rating category for sound quality of a film."
+  },
+  {
+    "Name": "Image Quality",
+    "Description": "Rating category for image quality of a film."
+  },
+  {
+    "Name": "HDR Effect",
+    "Description": "Rating category for HDR effect of a film."
+  },
+  {
+    "Name": "Overall Rating",
+    "Description": "Overall rating category for a film."
+  },
+  {
+    "Name": "Visual Effects",
+    "Description": "Rating category for visual effects of a film."
+  },
+  {
+    "Name": "Storyline",
+    "Description": "Rating category for the storyline of a film."
+  },
+  {
+    "Name": "Acting Performance",
+    "Description": "Rating category for the acting performance in a film."
+  },
+  {
+    "Name": "Cinematography",
+    "Description": "Rating category for cinematography of a film."
+  },
+  {
+    "Name": "Screenplay",
+    "Description": "Rating category for the screenplay of a film."
+  },
+  {
+    "Name": "Music Score",
+    "Description": "Rating category for the music score of a film."
+  }
+]

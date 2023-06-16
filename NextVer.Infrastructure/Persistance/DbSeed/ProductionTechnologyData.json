@@ -1,0 +1,230 @@
+[
+  {
+    "ProductionVersionId": 1,
+    "TechnologyId": 3
+  },
+  {
+    "ProductionVersionId": 1,
+    "TechnologyId": 7
+  },
+  {
+    "ProductionVersionId": 2,
+    "TechnologyId": 1
+  },
+  {
+    "ProductionVersionId": 2,
+    "TechnologyId": 4
+  },
+  {
+    "ProductionVersionId": 3,
+    "TechnologyId": 2
+  },
+  {
+    "ProductionVersionId": 3,
+    "TechnologyId": 5
+  },
+  {
+    "ProductionVersionId": 3,
+    "TechnologyId": 9
+  },
+  {
+    "ProductionVersionId": 4,
+    "TechnologyId": 3
+  },
+  {
+    "ProductionVersionId": 4,
+    "TechnologyId": 6
+  },
+  {
+    "ProductionVersionId": 4,
+    "TechnologyId": 8
+  },
+  {
+    "ProductionVersionId": 4,
+    "TechnologyId": 12
+  },
+  {
+    "ProductionVersionId": 5,
+    "TechnologyId": 1
+  },
+  {
+    "ProductionVersionId": 5,
+    "TechnologyId": 5
+  },
+  {
+    "ProductionVersionId": 5,
+    "TechnologyId": 10
+  },
+  {
+    "ProductionVersionId": 6,
+    "TechnologyId": 2
+  },
+  {
+    "ProductionVersionId": 6,
+    "TechnologyId": 3
+  },
+  {
+    "ProductionVersionId": 6,
+    "TechnologyId": 6
+  },
+  {
+    "ProductionVersionId": 6,
+    "TechnologyId": 11
+  },
+  {
+    "ProductionVersionId": 7,
+    "TechnologyId": 1
+  },
+  {
+    "ProductionVersionId": 7,
+    "TechnologyId": 4
+  },
+  {
+    "ProductionVersionId": 7,
+    "TechnologyId": 8
+  },
+  {
+    "ProductionVersionId": 7,
+    "TechnologyId": 13
+  },
+  {
+    "ProductionVersionId": 7,
+    "TechnologyId": 14
+  },
+  {
+    "ProductionVersionId": 8,
+    "TechnologyId": 2
+  },
+  {
+    "ProductionVersionId": 8,
+    "TechnologyId": 3
+  },
+  {
+    "ProductionVersionId": 8,
+    "TechnologyId": 6
+  },
+  {
+    "ProductionVersionId": 9,
+    "TechnologyId": 1
+  },
+  {
+    "ProductionVersionId": 9,
+    "TechnologyId": 5
+  },
+  {
+    "ProductionVersionId": 10,
+    "TechnologyId": 2
+  },
+  {
+    "ProductionVersionId": 10,
+    "TechnologyId": 4
+  },
+  {
+    "ProductionVersionId": 10,
+    "TechnologyId": 7
+  },
+  {
+    "ProductionVersionId": 11,
+    "TechnologyId": 1
+  },
+  {
+    "ProductionVersionId": 11,
+    "TechnologyId": 3
+  },
+  {
+    "ProductionVersionId": 12,
+    "TechnologyId": 2
+  },
+  {
+    "ProductionVersionId": 12,
+    "TechnologyId": 5
+  },
+  {
+    "ProductionVersionId": 13,
+    "TechnologyId": 1
+  },
+  {
+    "ProductionVersionId": 13,
+    "TechnologyId": 4
+  },
+  {
+    "ProductionVersionId": 14,
+    "TechnologyId": 3
+  },
+  {
+    "ProductionVersionId": 14,
+    "TechnologyId": 6
+  },
+  {
+    "ProductionVersionId": 14,
+    "TechnologyId": 9
+  },
+  {
+    "ProductionVersionId": 15,
+    "TechnologyId": 1
+  },
+  {
+    "ProductionVersionId": 15,
+    "TechnologyId": 5
+  },
+  {
+    "ProductionVersionId": 16,
+    "TechnologyId": 2
+  },
+  {
+    "ProductionVersionId": 16,
+    "TechnologyId": 4
+  },
+  {
+    "ProductionVersionId": 16,
+    "TechnologyId": 8
+  },
+  {
+    "ProductionVersionId": 17,
+    "TechnologyId": 1
+  },
+  {
+    "ProductionVersionId": 17,
+    "TechnologyId": 3
+  },
+  {
+    "ProductionVersionId": 17,
+    "TechnologyId": 7
+  },
+  {
+    "ProductionVersionId": 18,
+    "TechnologyId": 2
+  },
+  {
+    "ProductionVersionId": 18,
+    "TechnologyId": 5
+  },
+  {
+    "ProductionVersionId": 18,
+    "TechnologyId": 10
+  },
+  {
+    "ProductionVersionId": 18,
+    "TechnologyId": 11
+  },
+  {
+    "ProductionVersionId": 19,
+    "TechnologyId": 1
+  },
+  {
+    "ProductionVersionId": 19,
+    "TechnologyId": 4
+  },
+  {
+    "ProductionVersionId": 20,
+    "TechnologyId": 2
+  },
+  {
+    "ProductionVersionId": 20,
+    "TechnologyId": 4
+  },
+  {
+    "ProductionVersionId": 20,
+    "TechnologyId": 6
+  }
+]

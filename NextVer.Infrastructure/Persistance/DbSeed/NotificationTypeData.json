@@ -1,0 +1,27 @@
+[
+  {
+    "Name": "Email",
+    "Message": "You have received an email notification.",
+    "UserTypeId": 1
+  },
+  {
+    "Name": "SMS",
+    "Message": "You have received an SMS notification.",
+    "UserTypeId": 1
+  },
+  {
+    "Name": "Push",
+    "Message": "You have received a push notification.",
+    "UserTypeId": 1
+  },
+  {
+    "Name": "In-App",
+    "Message": "You have received an in-app notification.",
+    "UserTypeId": 1
+  },
+  {
+    "Name": "Voice Call",
+    "Message": "You have received a voice call notification.",
+    "UserTypeId": 1
+  }
+]

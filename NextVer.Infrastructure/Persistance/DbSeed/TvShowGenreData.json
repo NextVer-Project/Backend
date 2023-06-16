@@ -1,0 +1,90 @@
+[
+  {
+    "TvShowId": 1,
+    "GenreId": 2
+  },
+  {
+    "TvShowId": 1,
+    "GenreId": 9
+  },
+  {
+    "TvShowId": 2,
+    "GenreId": 3
+  },
+  {
+    "TvShowId": 2,
+    "GenreId": 11
+  },
+  {
+    "TvShowId": 3,
+    "GenreId": 1
+  },
+  {
+    "TvShowId": 3,
+    "GenreId": 7
+  },
+  {
+    "TvShowId": 4,
+    "GenreId": 4
+  },
+  {
+    "TvShowId": 4,
+    "GenreId": 10
+  },
+  {
+    "TvShowId": 5,
+    "GenreId": 6
+  },
+  {
+    "TvShowId": 5,
+    "GenreId": 13
+  },
+  {
+    "TvShowId": 6,
+    "GenreId": 8
+  },
+  {
+    "TvShowId": 6,
+    "GenreId": 14
+  },
+  {
+    "TvShowId": 7,
+    "GenreId": 12
+  },
+  {
+    "TvShowId": 7,
+    "GenreId": 16
+  },
+  {
+    "TvShowId": 8,
+    "GenreId": 15
+  },
+  {
+    "TvShowId": 8,
+    "GenreId": 17
+  },
+  {
+    "TvShowId": 9,
+    "GenreId": 3
+  },
+  {
+    "TvShowId": 9,
+    "GenreId": 8
+  },
+  {
+    "TvShowId": 10,
+    "GenreId": 2
+  },
+  {
+    "TvShowId": 10,
+    "GenreId": 6
+  },
+  {
+    "TvShowId": 11,
+    "GenreId": 1
+  },
+  {
+    "TvShowId": 11,
+    "GenreId": 12
+  }
+]

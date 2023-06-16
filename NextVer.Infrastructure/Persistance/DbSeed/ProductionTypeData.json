@@ -1,0 +1,14 @@
+[
+  {
+    "Name": "Movie",
+    "Description": "Production type for movies."
+  },
+  {
+    "Name": "TV Show",
+    "Description": "Production type for TV shows."
+  },
+  {
+    "Name": "Game",
+    "Description": "Production type for games."
+  }
+]

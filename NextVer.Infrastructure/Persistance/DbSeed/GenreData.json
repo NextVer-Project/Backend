@@ -1,0 +1,74 @@
+[
+  {
+    "Name": "Action",
+    "Description": "Genre focused on high-intensity and thrilling action scenes."
+  },
+  {
+    "Name": "Comedy",
+    "Description": "Genre centered around humor and comedic situations."
+  },
+  {
+    "Name": "Drama",
+    "Description": "Genre characterized by serious and emotional storytelling."
+  },
+  {
+    "Name": "Horror",
+    "Description": "Genre designed to elicit fear, terror, and suspense."
+  },
+  {
+    "Name": "Thriller",
+    "Description": "Genre that keeps the audience in suspense and anticipation."
+  },
+  {
+    "Name": "Science Fiction",
+    "Description": "Genre that explores imaginative and futuristic concepts."
+  },
+  {
+    "Name": "Adventure",
+    "Description": "Genre focused on exciting and daring journeys or quests."
+  },
+  {
+    "Name": "Mystery",
+    "Description": "Genre centered around the investigation and solving of puzzles and secrets."
+  },
+  {
+    "Name": "Animation",
+    "Description": "Genre featuring animated visuals and storytelling."
+  },
+  {
+    "Name": "Family",
+    "Description": "Genre suitable for audiences of all ages, focused on family-oriented themes."
+  },
+  {
+    "Name": "Documentary",
+    "Description": "Genre presenting factual accounts or observations."
+  },
+  {
+    "Name": "Crime",
+    "Description": "Genre focused on criminal activities, investigations, and law enforcement."
+  },
+  {
+    "Name": "Historical",
+    "Description": "Genre set in the past, often exploring historical events and figures."
+  },
+  {
+    "Name": "Western",
+    "Description": "Genre set in the American Old West, featuring cowboys and outlaws."
+  },
+  {
+    "Name": "Musical",
+    "Description": "Genre featuring songs, music, and dance performances as integral elements."
+  },
+  {
+    "Name": "Sports",
+    "Description": "Genre centered around sports activities and competitions."
+  },
+  {
+    "Name": "Biography",
+    "Description": "Genre depicting the life and achievements of real people."
+  },
+  {
+    "Name": "Fantasy",
+    "Description": "Genre characterized by supernatural elements and magical themes."
+  }
+]

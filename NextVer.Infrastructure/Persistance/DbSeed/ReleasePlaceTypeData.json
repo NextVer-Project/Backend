@@ -1,0 +1,46 @@
+[
+  {
+    "Name": "Digital Download",
+    "Description": "Release place type for digital download releases."
+  },
+  {
+    "Name": "VOD (Video on Demand)",
+    "Description": "Release place type for Video on Demand releases."
+  },
+  {
+    "Name": "Film Festival",
+    "Description": "Release place type for film festival screenings."
+  },
+  {
+    "Name": "Limited Theatrical Release",
+    "Description": "Release place type for limited theatrical releases."
+  },
+  {
+    "Name": "Online Platform",
+    "Description": "Release place type for releases on online platforms."
+  },
+  {
+    "Name": "Cinema",
+    "Description": "Release place type for cinema releases."
+  },
+  {
+    "Name": "DVD",
+    "Description": "Release place type for DVD releases."
+  },
+  {
+    "Name": "Blu-ray",
+    "Description": "Release place type for Blu-ray releases."
+  },
+  {
+    "Name": "Ultra HD Blu-ray",
+    "Description": "Release place type for Ultra HD Blu-ray releases."
+  },
+  {
+    "Name": "Streaming",
+    "Description": "Release place type for streaming releases."
+  },
+  {
+    "Name": "TV",
+    "Description": "Release place type for TV broadcasts."
+  }
+]
