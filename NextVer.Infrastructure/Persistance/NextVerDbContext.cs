@@ -32,10 +32,10 @@ namespace NextVer.Infrastructure.Persistance
         public DbSet<Technology> Technologies { get; set; }
         public DbSet<TechnologyType> TechnologyTypes { get; set; }
         public DbSet<Genre> Genres { get; set; }
-        public DbSet<MovieGenre> MoviesGenres { get; set; }
+        public DbSet<MovieGenre> MovieGenres { get; set; }
         public DbSet<TvShowGenre> TvShowGenres { get; set; }
         public DbSet<Universe> Universes { get; set; }
-        public DbSet<MovieUniverse> MoviesUniverses { get; set; }
+        public DbSet<MovieUniverse> MovieUniverses { get; set; }
         public DbSet<TvShowUniverse> TvShowUniverses { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Notification> Notifications { get; set; }
@@ -45,8 +45,8 @@ namespace NextVer.Infrastructure.Persistance
         public DbSet<Rating> Ratings { get; set; }
         public DbSet<RatingCategory> RatingCategories { get; set; }
         public DbSet<UserCollection> UserCollections { get; set; }
-        public DbSet<UserCollectionProduction> UserCollectionsProductions { get; set; }
-        public DbSet<UserCollectionType> UserCollectionsTypes { get; set; }
+        public DbSet<UserCollectionProduction> UserCollectionProductions { get; set; }
+        public DbSet<UserCollectionType> UserCollectionTypes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -69,9 +69,9 @@ namespace NextVer.Infrastructure.Persistance
             modelBuilder.Entity<TvShowUniverse>()
                 .HasKey(x => new { x.TvShowId, x.UniverseId });
             modelBuilder.Entity<ProductionTechnology>()
-                .HasKey(x => new { x.ProductionId, x.TechnologyId });
+                .HasKey(x => new { x.ProductionVersionId, x.TechnologyId });
             modelBuilder.Entity<UserCollectionProduction>()
-                .HasKey(x => new { x.UserCollectionId, x.ProductionId });
+                .HasKey(x => new { x.UserCollectionId, x.ProductionVersionId });
 
             base.OnModelCreating(modelBuilder);
         }
