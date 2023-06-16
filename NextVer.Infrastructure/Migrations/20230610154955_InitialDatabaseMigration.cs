@@ -111,7 +111,7 @@ namespace NextVer.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserCollectionsTypes",
+                name: "UserCollectionTypes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -121,7 +121,7 @@ namespace NextVer.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserCollectionsTypes", x => x.Id);
+                    table.PrimaryKey("PK_UserCollectionTypes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -140,6 +140,36 @@ namespace NextVer.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Galleries",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdMovieTVSerieGame = table.Column<int>(type: "int", nullable: false),
+                    ProductionTypeId = table.Column<int>(type: "int", nullable: false),
+                    MediaTypeId = table.Column<int>(type: "int", nullable: false),
+                    UrlLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    MediaGalleryTypeId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Galleries", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Galleries_MediaGalleryTypes_MediaGalleryTypeId",
+                        column: x => x.MediaGalleryTypeId,
+                        principalTable: "MediaGalleryTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Galleries_ProductionTypes_ProductionTypeId",
+                        column: x => x.ProductionTypeId,
+                        principalTable: "ProductionTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ReleasePlaces",
                 columns: table => new
                 {
@@ -149,7 +179,7 @@ namespace NextVer.Infrastructure.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LogoUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LinkUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ReleasePlaceTypeId = table.Column<int>(type: "int", nullable: true)
+                    ReleasePlaceTypeId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -158,7 +188,8 @@ namespace NextVer.Infrastructure.Migrations
                         name: "FK_ReleasePlaces_ReleasePlaceTypes_ReleasePlaceTypeId",
                         column: x => x.ReleasePlaceTypeId,
                         principalTable: "ReleasePlaceTypes",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -241,6 +272,35 @@ namespace NextVer.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Comments",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    IdMovieTVSerieGame = table.Column<int>(type: "int", nullable: false),
+                    ProductionTypeId = table.Column<int>(type: "int", nullable: false),
+                    CommentText = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Comments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Comments_ProductionTypes_ProductionTypeId",
+                        column: x => x.ProductionTypeId,
+                        principalTable: "ProductionTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Comments_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Movies",
                 columns: table => new
                 {
@@ -257,19 +317,125 @@ namespace NextVer.Infrastructure.Migrations
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    ViewCounter = table.Column<int>(type: "int", nullable: false),
-                    UniverseId = table.Column<int>(type: "int", nullable: true)
+                    ViewCounter = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Movies", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Movies_Universes_UniverseId",
-                        column: x => x.UniverseId,
-                        principalTable: "Universes",
-                        principalColumn: "Id");
-                    table.ForeignKey(
                         name: "FK_Movies_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Notifications",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    NotificationTypeId = table.Column<int>(type: "int", nullable: false),
+                    IdMovieTVSerieGame = table.Column<int>(type: "int", nullable: false),
+                    ProductionTypeId = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Notifications", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Notifications_NotificationTypes_NotificationTypeId",
+                        column: x => x.NotificationTypeId,
+                        principalTable: "NotificationTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Notifications_ProductionTypes_ProductionTypeId",
+                        column: x => x.ProductionTypeId,
+                        principalTable: "ProductionTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Notifications_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductionVersions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdMovieTVSerieGame = table.Column<int>(type: "int", nullable: false),
+                    ProductionTypeId = table.Column<int>(type: "int", nullable: false),
+                    ReleasePlaceId = table.Column<int>(type: "int", nullable: false),
+                    LinkToProductionVersion = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ReleasedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsApproved = table.Column<bool>(type: "bit", nullable: false),
+                    IsAvailable = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    ViewCounter = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductionVersions", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProductionVersions_ProductionTypes_ProductionTypeId",
+                        column: x => x.ProductionTypeId,
+                        principalTable: "ProductionTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ProductionVersions_ReleasePlaces_ReleasePlaceId",
+                        column: x => x.ReleasePlaceId,
+                        principalTable: "ReleasePlaces",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ProductionVersions_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Ratings",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    RatingCategoryId = table.Column<int>(type: "int", nullable: false),
+                    IdMovieTVSerieGame = table.Column<int>(type: "int", nullable: false),
+                    ProductionTypeId = table.Column<int>(type: "int", nullable: false),
+                    RatingValue = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Ratings", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Ratings_ProductionTypes_ProductionTypeId",
+                        column: x => x.ProductionTypeId,
+                        principalTable: "ProductionTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Ratings_RatingCategories_RatingCategoryId",
+                        column: x => x.RatingCategoryId,
+                        principalTable: "RatingCategories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Ratings_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -286,23 +452,16 @@ namespace NextVer.Infrastructure.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CoverUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TrailerUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProductionTypeId = table.Column<int>(type: "int", nullable: false),
                     IsApproved = table.Column<bool>(type: "bit", nullable: false),
                     IsAvailable = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    ViewCounter = table.Column<int>(type: "int", nullable: false),
-                    UniverseId = table.Column<int>(type: "int", nullable: true)
+                    ViewCounter = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TvShows", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_TvShows_Universes_UniverseId",
-                        column: x => x.UniverseId,
-                        principalTable: "Universes",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_TvShows_Users_UserId",
                         column: x => x.UserId,
@@ -312,7 +471,7 @@ namespace NextVer.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MoviesGenres",
+                name: "MovieGenres",
                 columns: table => new
                 {
                     MovieId = table.Column<int>(type: "int", nullable: false),
@@ -320,15 +479,15 @@ namespace NextVer.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MoviesGenres", x => new { x.MovieId, x.GenreId });
+                    table.PrimaryKey("PK_MovieGenres", x => new { x.MovieId, x.GenreId });
                     table.ForeignKey(
-                        name: "FK_MoviesGenres_Genres_GenreId",
+                        name: "FK_MovieGenres_Genres_GenreId",
                         column: x => x.GenreId,
                         principalTable: "Genres",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_MoviesGenres_Movies_MovieId",
+                        name: "FK_MovieGenres_Movies_MovieId",
                         column: x => x.MovieId,
                         principalTable: "Movies",
                         principalColumn: "Id",
@@ -336,7 +495,7 @@ namespace NextVer.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MoviesUniverses",
+                name: "MovieUniverses",
                 columns: table => new
                 {
                     MovieId = table.Column<int>(type: "int", nullable: false),
@@ -344,15 +503,15 @@ namespace NextVer.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MoviesUniverses", x => new { x.MovieId, x.UniverseId });
+                    table.PrimaryKey("PK_MovieUniverses", x => new { x.MovieId, x.UniverseId });
                     table.ForeignKey(
-                        name: "FK_MoviesUniverses_Movies_MovieId",
+                        name: "FK_MovieUniverses_Movies_MovieId",
                         column: x => x.MovieId,
                         principalTable: "Movies",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_MoviesUniverses_Universes_UniverseId",
+                        name: "FK_MovieUniverses_Universes_UniverseId",
                         column: x => x.UniverseId,
                         principalTable: "Universes",
                         principalColumn: "Id",
@@ -360,42 +519,59 @@ namespace NextVer.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Comments",
+                name: "ProductionTechnologies",
+                columns: table => new
+                {
+                    ProductionVersionId = table.Column<int>(type: "int", nullable: false),
+                    TechnologyId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductionTechnologies", x => new { x.ProductionVersionId, x.TechnologyId });
+                    table.ForeignKey(
+                        name: "FK_ProductionTechnologies_ProductionVersions_ProductionVersionId",
+                        column: x => x.ProductionVersionId,
+                        principalTable: "ProductionVersions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ProductionTechnologies_Technologies_TechnologyId",
+                        column: x => x.TechnologyId,
+                        principalTable: "Technologies",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserCollections",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    IdMovieTVSerieGame = table.Column<int>(type: "int", nullable: false),
-                    ProductionTypeId = table.Column<int>(type: "int", nullable: false),
-                    CommentText = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserCollectionTypeId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MovieId = table.Column<int>(type: "int", nullable: false),
-                    TvShowId = table.Column<int>(type: "int", nullable: false)
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ProductionVersionId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Comments", x => x.Id);
+                    table.PrimaryKey("PK_UserCollections", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Comments_Movies_MovieId",
-                        column: x => x.MovieId,
-                        principalTable: "Movies",
+                        name: "FK_UserCollections_ProductionVersions_ProductionVersionId",
+                        column: x => x.ProductionVersionId,
+                        principalTable: "ProductionVersions",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_UserCollections_UserCollectionTypes_UserCollectionTypeId",
+                        column: x => x.UserCollectionTypeId,
+                        principalTable: "UserCollectionTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Comments_ProductionTypes_ProductionTypeId",
-                        column: x => x.ProductionTypeId,
-                        principalTable: "ProductionTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Comments_TvShows_TvShowId",
-                        column: x => x.TvShowId,
-                        principalTable: "TvShows",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Comments_Users_UserId",
+                        name: "FK_UserCollections_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -430,211 +606,6 @@ namespace NextVer.Infrastructure.Migrations
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Episodes_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Galleries",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    IdMovieTVSerieGame = table.Column<int>(type: "int", nullable: false),
-                    ProductionTypeId = table.Column<int>(type: "int", nullable: false),
-                    MediaTypeId = table.Column<int>(type: "int", nullable: false),
-                    UrlLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MovieId = table.Column<int>(type: "int", nullable: false),
-                    TvShowId = table.Column<int>(type: "int", nullable: false),
-                    MediaGalleryTypeId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Galleries", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Galleries_MediaGalleryTypes_MediaGalleryTypeId",
-                        column: x => x.MediaGalleryTypeId,
-                        principalTable: "MediaGalleryTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Galleries_Movies_MovieId",
-                        column: x => x.MovieId,
-                        principalTable: "Movies",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Galleries_ProductionTypes_ProductionTypeId",
-                        column: x => x.ProductionTypeId,
-                        principalTable: "ProductionTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Galleries_TvShows_TvShowId",
-                        column: x => x.TvShowId,
-                        principalTable: "TvShows",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Notifications",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    NotifictionTypeId = table.Column<int>(type: "int", nullable: false),
-                    IdMovieTVSerieGame = table.Column<int>(type: "int", nullable: false),
-                    ProductionTypeId = table.Column<int>(type: "int", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MovieId = table.Column<int>(type: "int", nullable: false),
-                    TvShowId = table.Column<int>(type: "int", nullable: false),
-                    NotificationTypeId = table.Column<int>(type: "int", nullable: false),
-                    UserTypeId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Notifications", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Notifications_Movies_MovieId",
-                        column: x => x.MovieId,
-                        principalTable: "Movies",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Notifications_NotificationTypes_NotificationTypeId",
-                        column: x => x.NotificationTypeId,
-                        principalTable: "NotificationTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Notifications_ProductionTypes_ProductionTypeId",
-                        column: x => x.ProductionTypeId,
-                        principalTable: "ProductionTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Notifications_TvShows_TvShowId",
-                        column: x => x.TvShowId,
-                        principalTable: "TvShows",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Notifications_UserTypes_UserTypeId",
-                        column: x => x.UserTypeId,
-                        principalTable: "UserTypes",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Notifications_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ProductionVersions",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    MovieTvShowId = table.Column<int>(type: "int", nullable: false),
-                    ProductionTypeId = table.Column<int>(type: "int", nullable: false),
-                    ReleasePlaceId = table.Column<int>(type: "int", nullable: false),
-                    LinkToProductionVersion = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ReleasedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsApproved = table.Column<bool>(type: "bit", nullable: false),
-                    IsAvailable = table.Column<bool>(type: "bit", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    ViewCounter = table.Column<int>(type: "int", nullable: false),
-                    MovieId = table.Column<int>(type: "int", nullable: false),
-                    TvShowId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductionVersions", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ProductionVersions_Movies_MovieId",
-                        column: x => x.MovieId,
-                        principalTable: "Movies",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ProductionVersions_ProductionTypes_ProductionTypeId",
-                        column: x => x.ProductionTypeId,
-                        principalTable: "ProductionTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ProductionVersions_ReleasePlaces_ReleasePlaceId",
-                        column: x => x.ReleasePlaceId,
-                        principalTable: "ReleasePlaces",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ProductionVersions_TvShows_TvShowId",
-                        column: x => x.TvShowId,
-                        principalTable: "TvShows",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ProductionVersions_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Ratings",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    RatingCategoryId = table.Column<int>(type: "int", nullable: false),
-                    IdMovieTVSerieGame = table.Column<int>(type: "int", nullable: false),
-                    ProductionTypeId = table.Column<int>(type: "int", nullable: false),
-                    RatingValue = table.Column<int>(type: "int", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MovieId = table.Column<int>(type: "int", nullable: false),
-                    TvShowId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Ratings", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Ratings_Movies_MovieId",
-                        column: x => x.MovieId,
-                        principalTable: "Movies",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Ratings_ProductionTypes_ProductionTypeId",
-                        column: x => x.ProductionTypeId,
-                        principalTable: "ProductionTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Ratings_RatingCategories_RatingCategoryId",
-                        column: x => x.RatingCategoryId,
-                        principalTable: "RatingCategories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Ratings_TvShows_TvShowId",
-                        column: x => x.TvShowId,
-                        principalTable: "TvShows",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Ratings_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -690,83 +661,23 @@ namespace NextVer.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductionTechnologies",
-                columns: table => new
-                {
-                    ProductionId = table.Column<int>(type: "int", nullable: false),
-                    TechnologyId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductionTechnologies", x => new { x.ProductionId, x.TechnologyId });
-                    table.ForeignKey(
-                        name: "FK_ProductionTechnologies_ProductionVersions_ProductionId",
-                        column: x => x.ProductionId,
-                        principalTable: "ProductionVersions",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ProductionTechnologies_Technologies_TechnologyId",
-                        column: x => x.TechnologyId,
-                        principalTable: "Technologies",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UserCollections",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    UserCollectionTypeId = table.Column<int>(type: "int", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ProductionVersionId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserCollections", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_UserCollections_ProductionVersions_ProductionVersionId",
-                        column: x => x.ProductionVersionId,
-                        principalTable: "ProductionVersions",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_UserCollections_UserCollectionsTypes_UserCollectionTypeId",
-                        column: x => x.UserCollectionTypeId,
-                        principalTable: "UserCollectionsTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_UserCollections_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UserCollectionsProductions",
+                name: "UserCollectionProductions",
                 columns: table => new
                 {
                     UserCollectionId = table.Column<int>(type: "int", nullable: false),
-                    ProductionId = table.Column<int>(type: "int", nullable: false)
+                    ProductionVersionId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserCollectionsProductions", x => new { x.UserCollectionId, x.ProductionId });
+                    table.PrimaryKey("PK_UserCollectionProductions", x => new { x.UserCollectionId, x.ProductionVersionId });
                     table.ForeignKey(
-                        name: "FK_UserCollectionsProductions_ProductionVersions_ProductionId",
-                        column: x => x.ProductionId,
+                        name: "FK_UserCollectionProductions_ProductionVersions_ProductionVersionId",
+                        column: x => x.ProductionVersionId,
                         principalTable: "ProductionVersions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_UserCollectionsProductions_UserCollections_UserCollectionId",
+                        name: "FK_UserCollectionProductions_UserCollections_UserCollectionId",
                         column: x => x.UserCollectionId,
                         principalTable: "UserCollections",
                         principalColumn: "Id",
@@ -774,19 +685,9 @@ namespace NextVer.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comments_MovieId",
-                table: "Comments",
-                column: "MovieId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Comments_ProductionTypeId",
                 table: "Comments",
                 column: "ProductionTypeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Comments_TvShowId",
-                table: "Comments",
-                column: "TvShowId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_UserId",
@@ -809,24 +710,14 @@ namespace NextVer.Infrastructure.Migrations
                 column: "MediaGalleryTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Galleries_MovieId",
-                table: "Galleries",
-                column: "MovieId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Galleries_ProductionTypeId",
                 table: "Galleries",
                 column: "ProductionTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Galleries_TvShowId",
-                table: "Galleries",
-                column: "TvShowId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Movies_UniverseId",
-                table: "Movies",
-                column: "UniverseId");
+                name: "IX_MovieGenres_GenreId",
+                table: "MovieGenres",
+                column: "GenreId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Movies_UserId",
@@ -834,19 +725,9 @@ namespace NextVer.Infrastructure.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MoviesGenres_GenreId",
-                table: "MoviesGenres",
-                column: "GenreId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_MoviesUniverses_UniverseId",
-                table: "MoviesUniverses",
+                name: "IX_MovieUniverses_UniverseId",
+                table: "MovieUniverses",
                 column: "UniverseId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Notifications_MovieId",
-                table: "Notifications",
-                column: "MovieId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Notifications_NotificationTypeId",
@@ -859,19 +740,9 @@ namespace NextVer.Infrastructure.Migrations
                 column: "ProductionTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Notifications_TvShowId",
-                table: "Notifications",
-                column: "TvShowId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Notifications_UserId",
                 table: "Notifications",
                 column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Notifications_UserTypeId",
-                table: "Notifications",
-                column: "UserTypeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_NotificationTypes_UserTypeId",
@@ -884,11 +755,6 @@ namespace NextVer.Infrastructure.Migrations
                 column: "TechnologyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductionVersions_MovieId",
-                table: "ProductionVersions",
-                column: "MovieId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_ProductionVersions_ProductionTypeId",
                 table: "ProductionVersions",
                 column: "ProductionTypeId");
@@ -899,19 +765,9 @@ namespace NextVer.Infrastructure.Migrations
                 column: "ReleasePlaceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductionVersions_TvShowId",
-                table: "ProductionVersions",
-                column: "TvShowId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_ProductionVersions_UserId",
                 table: "ProductionVersions",
                 column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Ratings_MovieId",
-                table: "Ratings",
-                column: "MovieId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Ratings_ProductionTypeId",
@@ -922,11 +778,6 @@ namespace NextVer.Infrastructure.Migrations
                 name: "IX_Ratings_RatingCategoryId",
                 table: "Ratings",
                 column: "RatingCategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Ratings_TvShowId",
-                table: "Ratings",
-                column: "TvShowId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Ratings_UserId",
@@ -949,11 +800,6 @@ namespace NextVer.Infrastructure.Migrations
                 column: "GenreId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TvShows_UniverseId",
-                table: "TvShows",
-                column: "UniverseId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_TvShows_UserId",
                 table: "TvShows",
                 column: "UserId");
@@ -962,6 +808,11 @@ namespace NextVer.Infrastructure.Migrations
                 name: "IX_TvShowUniverses_UniverseId",
                 table: "TvShowUniverses",
                 column: "UniverseId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserCollectionProductions_ProductionVersionId",
+                table: "UserCollectionProductions",
+                column: "ProductionVersionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserCollections_ProductionVersionId",
@@ -977,11 +828,6 @@ namespace NextVer.Infrastructure.Migrations
                 name: "IX_UserCollections_UserId",
                 table: "UserCollections",
                 column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UserCollectionsProductions_ProductionId",
-                table: "UserCollectionsProductions",
-                column: "ProductionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_UserTypeId",
@@ -1002,10 +848,10 @@ namespace NextVer.Infrastructure.Migrations
                 name: "Galleries");
 
             migrationBuilder.DropTable(
-                name: "MoviesGenres");
+                name: "MovieGenres");
 
             migrationBuilder.DropTable(
-                name: "MoviesUniverses");
+                name: "MovieUniverses");
 
             migrationBuilder.DropTable(
                 name: "Notifications");
@@ -1023,10 +869,13 @@ namespace NextVer.Infrastructure.Migrations
                 name: "TvShowUniverses");
 
             migrationBuilder.DropTable(
-                name: "UserCollectionsProductions");
+                name: "UserCollectionProductions");
 
             migrationBuilder.DropTable(
                 name: "MediaGalleryTypes");
+
+            migrationBuilder.DropTable(
+                name: "Movies");
 
             migrationBuilder.DropTable(
                 name: "NotificationTypes");
@@ -1041,6 +890,12 @@ namespace NextVer.Infrastructure.Migrations
                 name: "Genres");
 
             migrationBuilder.DropTable(
+                name: "TvShows");
+
+            migrationBuilder.DropTable(
+                name: "Universes");
+
+            migrationBuilder.DropTable(
                 name: "UserCollections");
 
             migrationBuilder.DropTable(
@@ -1050,10 +905,7 @@ namespace NextVer.Infrastructure.Migrations
                 name: "ProductionVersions");
 
             migrationBuilder.DropTable(
-                name: "UserCollectionsTypes");
-
-            migrationBuilder.DropTable(
-                name: "Movies");
+                name: "UserCollectionTypes");
 
             migrationBuilder.DropTable(
                 name: "ProductionTypes");
@@ -1062,16 +914,10 @@ namespace NextVer.Infrastructure.Migrations
                 name: "ReleasePlaces");
 
             migrationBuilder.DropTable(
-                name: "TvShows");
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "ReleasePlaceTypes");
-
-            migrationBuilder.DropTable(
-                name: "Universes");
-
-            migrationBuilder.DropTable(
-                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "UserTypes");

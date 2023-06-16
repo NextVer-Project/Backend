@@ -12,7 +12,7 @@ using NextVer.Infrastructure.Persistance;
 namespace NextVer.Infrastructure.Migrations
 {
     [DbContext(typeof(NextVerDbContext))]
-    [Migration("20230601180912_InitialDatabaseMigration")]
+    [Migration("20230610154955_InitialDatabaseMigration")]
     partial class InitialDatabaseMigration
     {
         /// <inheritdoc />
@@ -43,13 +43,7 @@ namespace NextVer.Infrastructure.Migrations
                     b.Property<int>("IdMovieTVSerieGame")
                         .HasColumnType("int");
 
-                    b.Property<int>("MovieId")
-                        .HasColumnType("int");
-
                     b.Property<int>("ProductionTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TvShowId")
                         .HasColumnType("int");
 
                     b.Property<int>("UserId")
@@ -57,11 +51,7 @@ namespace NextVer.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MovieId");
-
                     b.HasIndex("ProductionTypeId");
-
-                    b.HasIndex("TvShowId");
 
                     b.HasIndex("UserId");
 
@@ -137,13 +127,7 @@ namespace NextVer.Infrastructure.Migrations
                     b.Property<int>("MediaTypeId")
                         .HasColumnType("int");
 
-                    b.Property<int>("MovieId")
-                        .HasColumnType("int");
-
                     b.Property<int>("ProductionTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TvShowId")
                         .HasColumnType("int");
 
                     b.Property<string>("UrlLink")
@@ -154,11 +138,7 @@ namespace NextVer.Infrastructure.Migrations
 
                     b.HasIndex("MediaGalleryTypeId");
 
-                    b.HasIndex("MovieId");
-
                     b.HasIndex("ProductionTypeId");
-
-                    b.HasIndex("TvShowId");
 
                     b.ToTable("Galleries");
                 });
@@ -244,9 +224,6 @@ namespace NextVer.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UniverseId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
@@ -257,8 +234,6 @@ namespace NextVer.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UniverseId");
 
                     b.HasIndex("UserId");
 
@@ -277,7 +252,7 @@ namespace NextVer.Infrastructure.Migrations
 
                     b.HasIndex("GenreId");
 
-                    b.ToTable("MoviesGenres");
+                    b.ToTable("MovieGenres");
                 });
 
             modelBuilder.Entity("NextVer.Domain.Models.MovieUniverse", b =>
@@ -292,7 +267,7 @@ namespace NextVer.Infrastructure.Migrations
 
                     b.HasIndex("UniverseId");
 
-                    b.ToTable("MoviesUniverses");
+                    b.ToTable("MovieUniverses");
                 });
 
             modelBuilder.Entity("NextVer.Domain.Models.Notification", b =>
@@ -309,40 +284,22 @@ namespace NextVer.Infrastructure.Migrations
                     b.Property<int>("IdMovieTVSerieGame")
                         .HasColumnType("int");
 
-                    b.Property<int>("MovieId")
-                        .HasColumnType("int");
-
                     b.Property<int>("NotificationTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NotifictionTypeId")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductionTypeId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TvShowId")
-                        .HasColumnType("int");
-
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserTypeId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("MovieId");
 
                     b.HasIndex("NotificationTypeId");
 
                     b.HasIndex("ProductionTypeId");
 
-                    b.HasIndex("TvShowId");
-
                     b.HasIndex("UserId");
-
-                    b.HasIndex("UserTypeId");
 
                     b.ToTable("Notifications");
                 });
@@ -375,13 +332,13 @@ namespace NextVer.Infrastructure.Migrations
 
             modelBuilder.Entity("NextVer.Domain.Models.ProductionTechnology", b =>
                 {
-                    b.Property<int>("ProductionId")
+                    b.Property<int>("ProductionVersionId")
                         .HasColumnType("int");
 
                     b.Property<int>("TechnologyId")
                         .HasColumnType("int");
 
-                    b.HasKey("ProductionId", "TechnologyId");
+                    b.HasKey("ProductionVersionId", "TechnologyId");
 
                     b.HasIndex("TechnologyId");
 
@@ -420,6 +377,9 @@ namespace NextVer.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("IdMovieTVSerieGame")
+                        .HasColumnType("int");
+
                     b.Property<bool>("IsApproved")
                         .HasColumnType("bit");
 
@@ -430,12 +390,6 @@ namespace NextVer.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MovieId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MovieTvShowId")
-                        .HasColumnType("int");
-
                     b.Property<int>("ProductionTypeId")
                         .HasColumnType("int");
 
@@ -444,9 +398,6 @@ namespace NextVer.Infrastructure.Migrations
 
                     b.Property<DateTime>("ReleasedDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("TvShowId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -459,13 +410,9 @@ namespace NextVer.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MovieId");
-
                     b.HasIndex("ProductionTypeId");
 
                     b.HasIndex("ReleasePlaceId");
-
-                    b.HasIndex("TvShowId");
 
                     b.HasIndex("UserId");
 
@@ -486,9 +433,6 @@ namespace NextVer.Infrastructure.Migrations
                     b.Property<int>("IdMovieTVSerieGame")
                         .HasColumnType("int");
 
-                    b.Property<int>("MovieId")
-                        .HasColumnType("int");
-
                     b.Property<int>("ProductionTypeId")
                         .HasColumnType("int");
 
@@ -498,21 +442,14 @@ namespace NextVer.Infrastructure.Migrations
                     b.Property<int>("RatingValue")
                         .HasColumnType("int");
 
-                    b.Property<int>("TvShowId")
-                        .HasColumnType("int");
-
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MovieId");
-
                     b.HasIndex("ProductionTypeId");
 
                     b.HasIndex("RatingCategoryId");
-
-                    b.HasIndex("TvShowId");
 
                     b.HasIndex("UserId");
 
@@ -564,7 +501,7 @@ namespace NextVer.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ReleasePlaceTypeId")
+                    b.Property<int>("ReleasePlaceTypeId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -671,9 +608,6 @@ namespace NextVer.Infrastructure.Migrations
                     b.Property<bool>("IsAvailable")
                         .HasColumnType("bit");
 
-                    b.Property<int>("ProductionTypeId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -681,9 +615,6 @@ namespace NextVer.Infrastructure.Migrations
                     b.Property<string>("TrailerUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("UniverseId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -695,8 +626,6 @@ namespace NextVer.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UniverseId");
 
                     b.HasIndex("UserId");
 
@@ -883,14 +812,14 @@ namespace NextVer.Infrastructure.Migrations
                     b.Property<int>("UserCollectionId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProductionId")
+                    b.Property<int>("ProductionVersionId")
                         .HasColumnType("int");
 
-                    b.HasKey("UserCollectionId", "ProductionId");
+                    b.HasKey("UserCollectionId", "ProductionVersionId");
 
-                    b.HasIndex("ProductionId");
+                    b.HasIndex("ProductionVersionId");
 
-                    b.ToTable("UserCollectionsProductions");
+                    b.ToTable("UserCollectionProductions");
                 });
 
             modelBuilder.Entity("NextVer.Domain.Models.UserCollectionType", b =>
@@ -911,7 +840,7 @@ namespace NextVer.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserCollectionsTypes");
+                    b.ToTable("UserCollectionTypes");
                 });
 
             modelBuilder.Entity("NextVer.Domain.Models.UserType", b =>
@@ -941,21 +870,9 @@ namespace NextVer.Infrastructure.Migrations
 
             modelBuilder.Entity("NextVer.Domain.Models.Comment", b =>
                 {
-                    b.HasOne("NextVer.Domain.Models.Movie", "Movie")
-                        .WithMany("Comments")
-                        .HasForeignKey("MovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("NextVer.Domain.Models.ProductionType", "ProductionType")
                         .WithMany("Comments")
                         .HasForeignKey("ProductionTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("NextVer.Domain.Models.TvShow", "TvShow")
-                        .WithMany("Comments")
-                        .HasForeignKey("TvShowId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -965,11 +882,7 @@ namespace NextVer.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Movie");
-
                     b.Navigation("ProductionType");
-
-                    b.Navigation("TvShow");
 
                     b.Navigation("User");
                 });
@@ -1001,39 +914,19 @@ namespace NextVer.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NextVer.Domain.Models.Movie", "Movie")
-                        .WithMany("Galleries")
-                        .HasForeignKey("MovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("NextVer.Domain.Models.ProductionType", "ProductionType")
                         .WithMany("Galleries")
                         .HasForeignKey("ProductionTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NextVer.Domain.Models.TvShow", "TvShow")
-                        .WithMany("Galleries")
-                        .HasForeignKey("TvShowId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("MediaGalleryType");
 
-                    b.Navigation("Movie");
-
                     b.Navigation("ProductionType");
-
-                    b.Navigation("TvShow");
                 });
 
             modelBuilder.Entity("NextVer.Domain.Models.Movie", b =>
                 {
-                    b.HasOne("NextVer.Domain.Models.Universe", null)
-                        .WithMany("Movies")
-                        .HasForeignKey("UniverseId");
-
                     b.HasOne("NextVer.Domain.Models.User", "User")
                         .WithMany("Movies")
                         .HasForeignKey("UserId")
@@ -1052,7 +945,7 @@ namespace NextVer.Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("NextVer.Domain.Models.Movie", "Movie")
-                        .WithMany("MoviesGenres")
+                        .WithMany("MovieGenres")
                         .HasForeignKey("MovieId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1065,13 +958,13 @@ namespace NextVer.Infrastructure.Migrations
             modelBuilder.Entity("NextVer.Domain.Models.MovieUniverse", b =>
                 {
                     b.HasOne("NextVer.Domain.Models.Movie", "Movie")
-                        .WithMany("MoviesUniverses")
+                        .WithMany("MovieUniverses")
                         .HasForeignKey("MovieId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("NextVer.Domain.Models.Universe", "Universe")
-                        .WithMany()
+                        .WithMany("MovieUniverses")
                         .HasForeignKey("UniverseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1083,12 +976,6 @@ namespace NextVer.Infrastructure.Migrations
 
             modelBuilder.Entity("NextVer.Domain.Models.Notification", b =>
                 {
-                    b.HasOne("NextVer.Domain.Models.Movie", "Movie")
-                        .WithMany("Notifications")
-                        .HasForeignKey("MovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("NextVer.Domain.Models.NotificationType", "NotificationType")
                         .WithMany("Notifications")
                         .HasForeignKey("NotificationTypeId")
@@ -1101,29 +988,15 @@ namespace NextVer.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NextVer.Domain.Models.TvShow", "TvShow")
-                        .WithMany("Notifications")
-                        .HasForeignKey("TvShowId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("NextVer.Domain.Models.User", "User")
                         .WithMany("Notifications")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("NextVer.Domain.Models.UserType", null)
-                        .WithMany("Notifications")
-                        .HasForeignKey("UserTypeId");
-
-                    b.Navigation("Movie");
-
                     b.Navigation("NotificationType");
 
                     b.Navigation("ProductionType");
-
-                    b.Navigation("TvShow");
 
                     b.Navigation("User");
                 });
@@ -1131,7 +1004,7 @@ namespace NextVer.Infrastructure.Migrations
             modelBuilder.Entity("NextVer.Domain.Models.NotificationType", b =>
                 {
                     b.HasOne("NextVer.Domain.Models.UserType", "UserType")
-                        .WithMany()
+                        .WithMany("NotificationTypes")
                         .HasForeignKey("UserTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1141,9 +1014,9 @@ namespace NextVer.Infrastructure.Migrations
 
             modelBuilder.Entity("NextVer.Domain.Models.ProductionTechnology", b =>
                 {
-                    b.HasOne("NextVer.Domain.Models.ProductionVersion", "Production")
+                    b.HasOne("NextVer.Domain.Models.ProductionVersion", "ProductionVersion")
                         .WithMany("ProductionTechnologies")
-                        .HasForeignKey("ProductionId")
+                        .HasForeignKey("ProductionVersionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1153,19 +1026,13 @@ namespace NextVer.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Production");
+                    b.Navigation("ProductionVersion");
 
                     b.Navigation("Technology");
                 });
 
             modelBuilder.Entity("NextVer.Domain.Models.ProductionVersion", b =>
                 {
-                    b.HasOne("NextVer.Domain.Models.Movie", "Movie")
-                        .WithMany()
-                        .HasForeignKey("MovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("NextVer.Domain.Models.ProductionType", "ProductionType")
                         .WithMany("Productions")
                         .HasForeignKey("ProductionTypeId")
@@ -1178,37 +1045,21 @@ namespace NextVer.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NextVer.Domain.Models.TvShow", "TvShow")
-                        .WithMany()
-                        .HasForeignKey("TvShowId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("NextVer.Domain.Models.User", "User")
                         .WithMany("Productions")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Movie");
-
                     b.Navigation("ProductionType");
 
                     b.Navigation("ReleasePlace");
-
-                    b.Navigation("TvShow");
 
                     b.Navigation("User");
                 });
 
             modelBuilder.Entity("NextVer.Domain.Models.Rating", b =>
                 {
-                    b.HasOne("NextVer.Domain.Models.Movie", "Movie")
-                        .WithMany("Ratings")
-                        .HasForeignKey("MovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("NextVer.Domain.Models.ProductionType", "ProductionType")
                         .WithMany("Ratings")
                         .HasForeignKey("ProductionTypeId")
@@ -1221,34 +1072,28 @@ namespace NextVer.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NextVer.Domain.Models.TvShow", "TvShow")
-                        .WithMany("Ratings")
-                        .HasForeignKey("TvShowId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("NextVer.Domain.Models.User", "User")
                         .WithMany("Ratings")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Movie");
-
                     b.Navigation("ProductionType");
 
                     b.Navigation("RatingCategory");
-
-                    b.Navigation("TvShow");
 
                     b.Navigation("User");
                 });
 
             modelBuilder.Entity("NextVer.Domain.Models.ReleasePlace", b =>
                 {
-                    b.HasOne("NextVer.Domain.Models.ReleasePlaceType", null)
+                    b.HasOne("NextVer.Domain.Models.ReleasePlaceType", "ReleasePlaceType")
                         .WithMany("ReleasePlaces")
-                        .HasForeignKey("ReleasePlaceTypeId");
+                        .HasForeignKey("ReleasePlaceTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ReleasePlaceType");
                 });
 
             modelBuilder.Entity("NextVer.Domain.Models.Technology", b =>
@@ -1264,10 +1109,6 @@ namespace NextVer.Infrastructure.Migrations
 
             modelBuilder.Entity("NextVer.Domain.Models.TvShow", b =>
                 {
-                    b.HasOne("NextVer.Domain.Models.Universe", null)
-                        .WithMany("TvShows")
-                        .HasForeignKey("UniverseId");
-
                     b.HasOne("NextVer.Domain.Models.User", "User")
                         .WithMany("TvShows")
                         .HasForeignKey("UserId")
@@ -1280,7 +1121,7 @@ namespace NextVer.Infrastructure.Migrations
             modelBuilder.Entity("NextVer.Domain.Models.TvShowGenre", b =>
                 {
                     b.HasOne("NextVer.Domain.Models.Genre", "Genre")
-                        .WithMany("TvShowsGenres")
+                        .WithMany("TvShowGenres")
                         .HasForeignKey("GenreId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1305,7 +1146,7 @@ namespace NextVer.Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("NextVer.Domain.Models.Universe", "Universe")
-                        .WithMany()
+                        .WithMany("TvShowUniverses")
                         .HasForeignKey("UniverseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1351,9 +1192,9 @@ namespace NextVer.Infrastructure.Migrations
 
             modelBuilder.Entity("NextVer.Domain.Models.UserCollectionProduction", b =>
                 {
-                    b.HasOne("NextVer.Domain.Models.ProductionVersion", "Production")
+                    b.HasOne("NextVer.Domain.Models.ProductionVersion", "ProductionVersion")
                         .WithMany()
-                        .HasForeignKey("ProductionId")
+                        .HasForeignKey("ProductionVersionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1363,7 +1204,7 @@ namespace NextVer.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Production");
+                    b.Navigation("ProductionVersion");
 
                     b.Navigation("UserCollection");
                 });
@@ -1372,7 +1213,7 @@ namespace NextVer.Infrastructure.Migrations
                 {
                     b.Navigation("MovieGenres");
 
-                    b.Navigation("TvShowsGenres");
+                    b.Navigation("TvShowGenres");
                 });
 
             modelBuilder.Entity("NextVer.Domain.Models.MediaGalleryType", b =>
@@ -1382,17 +1223,9 @@ namespace NextVer.Infrastructure.Migrations
 
             modelBuilder.Entity("NextVer.Domain.Models.Movie", b =>
                 {
-                    b.Navigation("Comments");
+                    b.Navigation("MovieGenres");
 
-                    b.Navigation("Galleries");
-
-                    b.Navigation("MoviesGenres");
-
-                    b.Navigation("MoviesUniverses");
-
-                    b.Navigation("Notifications");
-
-                    b.Navigation("Ratings");
+                    b.Navigation("MovieUniverses");
                 });
 
             modelBuilder.Entity("NextVer.Domain.Models.NotificationType", b =>
@@ -1442,15 +1275,7 @@ namespace NextVer.Infrastructure.Migrations
 
             modelBuilder.Entity("NextVer.Domain.Models.TvShow", b =>
                 {
-                    b.Navigation("Comments");
-
                     b.Navigation("Episodes");
-
-                    b.Navigation("Galleries");
-
-                    b.Navigation("Notifications");
-
-                    b.Navigation("Ratings");
 
                     b.Navigation("TvShowGenres");
 
@@ -1459,9 +1284,9 @@ namespace NextVer.Infrastructure.Migrations
 
             modelBuilder.Entity("NextVer.Domain.Models.Universe", b =>
                 {
-                    b.Navigation("Movies");
+                    b.Navigation("MovieUniverses");
 
-                    b.Navigation("TvShows");
+                    b.Navigation("TvShowUniverses");
                 });
 
             modelBuilder.Entity("NextVer.Domain.Models.User", b =>
@@ -1495,7 +1320,7 @@ namespace NextVer.Infrastructure.Migrations
 
             modelBuilder.Entity("NextVer.Domain.Models.UserType", b =>
                 {
-                    b.Navigation("Notifications");
+                    b.Navigation("NotificationTypes");
 
                     b.Navigation("Users");
                 });
