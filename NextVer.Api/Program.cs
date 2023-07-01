@@ -1,3 +1,4 @@
+using Hangfire;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -18,6 +19,7 @@ builder.Services.AddControllers();
 builder.Services.ConfigureSwagger();
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.ConfigureDependencyInjection();
+builder.Services.ConfigureHangfire(configuration);
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -64,5 +66,8 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
+
+app.UseHangfireDashboard();
+app.UseHangfireServer();
 
 app.Run();
