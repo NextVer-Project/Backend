@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using NextVer.Domain.DTOs;
+using NextVer.Domain.Models;
 
 namespace NextVerBackend.Helpers
 {
@@ -6,6 +8,8 @@ namespace NextVerBackend.Helpers
     {
         public AutoMapperProfiles()
         {
+            CreateMap<UserForRegisterDto, User>();
+            CreateMap<UserForLoginDto, User>();
         }
     }
 }
