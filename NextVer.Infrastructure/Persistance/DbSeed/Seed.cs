@@ -49,10 +49,7 @@ namespace NextVer.Infrastructure.Persistence.DbSeed
             using (var hmac = new HMACSHA512())
             {
                 var salt = new byte[64];
-                using (var rng = new RNGCryptoServiceProvider())
-                {
-                    rng.GetBytes(salt);
-                }
+                RandomNumberGenerator.Fill(salt);
 
                 passwordSalt = salt;
                 passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
