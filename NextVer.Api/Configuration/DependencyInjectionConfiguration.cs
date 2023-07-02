@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using NextVer.Infrastructure.Interfaces;
+using NextVer.Infrastructure.Repositories;
 
 namespace NextVerBackend.Configuration
 {
@@ -6,6 +7,7 @@ namespace NextVerBackend.Configuration
     {
         public static void ConfigureDependencyInjection(this IServiceCollection services)
         {
+            services.AddScoped<IAuthRepository, AuthRepository>();
         }
     }
 }
