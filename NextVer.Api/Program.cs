@@ -68,6 +68,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.UseHangfireDashboard();
-app.UseHangfireServer();
 
 app.Run();
