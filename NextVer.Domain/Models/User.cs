@@ -29,8 +29,8 @@ namespace NextVer.Domain.Models
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
         [Encrypted]
-        public string RegistrationToken { get; set; }
-        public DateTime RegistrationTokenGeneratedTime { get; set; }
+        public string ConfirmationToken { get; set; }
+        public DateTime ConfirmationTokenGeneratedTime { get; set; }
         public int Points { get; set; }
 
         public virtual UserType UserType { get; set; }
