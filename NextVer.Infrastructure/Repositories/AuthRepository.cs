@@ -125,7 +125,7 @@ namespace NextVer.Infrastructure.Repositories
             if (user.ConfirmationToken != token)
                 return false;
 
-            user.ConfirmationToken = null;
+            //user.ConfirmationToken = null;
             user.IsVerified = true;
 
             try
@@ -207,13 +207,6 @@ namespace NextVer.Infrastructure.Repositories
 
             return true;
         }
-
-        /*public async Task<bool> UpdateUser(User user) { }
-        public async Task<bool> DeleteUser(int userId) { }
-        public async Task<bool> ResetPassword(string username, string newPassword) { }
-        public async Task<bool> ConfirmPasswordChange(string token, string username, string newPassword) { }
-        public async Task<bool> UserHasPrivileges(int userId, int privileges) { }
-        public async Task<bool> VerifyAuthToken(string token) { }*/
         private static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
             using var hmac = new HMACSHA512();

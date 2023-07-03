@@ -12,6 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 var configuration = builder.Configuration;
 
+builder.Services.Configure<EmailConfiguration>(configuration.GetSection("EmailConfiguration"));
+
 builder.Services.AddDbContext<NextVerDbContext>(options => options
     .UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
