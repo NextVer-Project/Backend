@@ -23,7 +23,6 @@ namespace NextVerBackend.Controllers
         private readonly IMapper _mapper;
         private readonly IEmailService _emailService;
 
-
         public AuthController(IConfiguration configuration, IAuthRepository authRepository, IMapper mapper, IEmailService emailService)
         {
             _configuration = configuration;
@@ -67,18 +66,26 @@ namespace NextVerBackend.Controllers
             if (user == null)
                 return Unauthorized();
 
+            var isLinkRenewed = await _authRepository.CheckAndRenewActivationLink(user);
+
             if (!user.IsVerified)
             {
-                var result = await SendEmail(user);
+                if (isLinkRenewed)
+                {
+                    var result = await SendEmail(user);
 
-                return result ? Unauthorized("Please confirm your e-mail address first.")
-                    : StatusCode((int)HttpStatusCode.InternalServerError);
+                    return result ? Unauthorized("Please confirm your e-mail address first. The previous activation link has expired, so a new one was sent.")
+                        : StatusCode((int)HttpStatusCode.InternalServerError);
+                }
+
+                return Unauthorized("Please confirm your e-mail address first. The activation link is still valid.");
             }
 
             var claims = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.Username)
+                new Claim(ClaimTypes.Name, user.Username),
+                new Claim(ClaimTypes.Role, user.UserTypeId.ToString())
             };
 
             SymmetricSecurityKey key;
@@ -127,11 +134,13 @@ namespace NextVerBackend.Controllers
 
         private async Task<bool> SendEmail(User user)
         {
+            var userType = await _authRepository.GetById(user.Id);
+            var userTypeName = userType.UserType?.Name ?? "Unknown";
             var emailActionLink = Url.Action("ConfirmEmail", "Auth",
                 new { Token = user.ConfirmationToken, Username = user.Username },
                 ControllerContext.HttpContext.Request.Scheme);
 
-            var message = ConfirmationEmailBuilder.BuildConfirmationMessage(user.Email, user.Username, emailActionLink);
+            var message = ConfirmationEmailBuilder.BuildConfirmationMessage(user.Email, user.Username, emailActionLink, user.FirstName, user.LastName, userTypeName, user.City, user.Country, user.CreatedAt.ToString());
 
             return await _emailService.SendEmail(message);
         }
