@@ -1,4 +1,5 @@
 ﻿using MimeKit;
+using MimeKit.Text;
 
 namespace NextVer.Domain.Email
 {
@@ -8,5 +9,6 @@ namespace NextVer.Domain.Email
         public MailboxAddress Receiver { get; set; }
         public string Subject { get; set; }
         public string Content { get; set; }
+        public TextFormat ContentType { get; set; } = TextFormat.Plain;
     }
 }
