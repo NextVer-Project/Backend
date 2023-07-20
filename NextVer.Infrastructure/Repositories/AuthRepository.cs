@@ -1,4 +1,5 @@
-﻿using Hangfire;
+﻿
+using Hangfire;
 using Microsoft.EntityFrameworkCore;
 using NextVer.Domain.DTOs;
 using NextVer.Domain.Models;
@@ -8,12 +9,14 @@ using NextVer.Infrastructure.Persistance;
 using System.Security.Cryptography;
 using System.Text;
 
+
 namespace NextVer.Infrastructure.Repositories
 {
     public class AuthRepository : IAuthRepository
     {
         private readonly NextVerDbContext _context;
-        private const int ExpirationTimeInHours = 3;
+        private const int ExpirationTimeInHours = 5;
+
 
         public AuthRepository(NextVerDbContext context)
         {
@@ -31,6 +34,8 @@ namespace NextVer.Infrastructure.Repositories
             user.PasswordSalt = passwordSalt;
             user.UserTypeId = 1;
             user.UserLogoUrl = "https://example.com/user1.jpg";
+            user.CreatedAt = DateTime.UtcNow;
+            user.UpdatedAt = DateTime.UtcNow;
             GenerateConfirmationToken(ref user);
 
             try
@@ -63,13 +68,6 @@ namespace NextVer.Infrastructure.Repositories
 
             if (user == null)
                 return null;
-
-            if (!user.IsVerified)
-            {
-                GenerateConfirmationToken(ref user);
-                _context.Users.Update(user);
-                await _context.SaveChangesAsync();
-            }
 
             return VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt) ? user : null;
         }
@@ -117,15 +115,18 @@ namespace NextVer.Infrastructure.Repositories
             if (user == null)
                 return false;
 
-            var interval = DateTime.UtcNow - user.ConfirmationTokenGeneratedTime;
+            if (user.IsVerified)
+                return false;
 
-            if (interval.Hours >= ExpirationTimeInHours)
+            bool isLinkExpired = IsActivationLinkExpired(user);
+
+            if (isLinkExpired)
                 return false;
 
             if (user.ConfirmationToken != token)
                 return false;
 
-            user.ConfirmationToken = null;
+            //user.ConfirmationToken = null;
             user.IsVerified = true;
 
             try
@@ -207,13 +208,6 @@ namespace NextVer.Infrastructure.Repositories
 
             return true;
         }
-
-        /*public async Task<bool> UpdateUser(User user) { }
-        public async Task<bool> DeleteUser(int userId) { }
-        public async Task<bool> ResetPassword(string username, string newPassword) { }
-        public async Task<bool> ConfirmPasswordChange(string token, string username, string newPassword) { }
-        public async Task<bool> UserHasPrivileges(int userId, int privileges) { }
-        public async Task<bool> VerifyAuthToken(string token) { }*/
         private static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
             using var hmac = new HMACSHA512();
@@ -237,7 +231,9 @@ namespace NextVer.Infrastructure.Repositories
         {
             try
             {
-                return await _context.Users.FirstOrDefaultAsync(x => x.Id == userId);
+                return await _context.Users
+                    .Include(u => u.UserType)
+                    .FirstOrDefaultAsync(x => x.Id == userId);
             }
             catch (Exception e)
             {
@@ -274,6 +270,26 @@ namespace NextVer.Infrastructure.Repositories
                 user.IsVerified = true;
                 await Update(user);
             }
+        }
+        public bool IsActivationLinkExpired(User user)
+        {
+            var interval = DateTime.UtcNow - user.ConfirmationTokenGeneratedTime;
+            return interval.Hours >= ExpirationTimeInHours;
+        }
+        public async Task<bool> CheckAndRenewActivationLink(User user)
+        {
+            bool isLinkExpired = IsActivationLinkExpired(user);
+
+            if (!user.IsVerified && isLinkExpired)
+            {
+                GenerateConfirmationToken(ref user);
+                _context.Users.Update(user);
+                await _context.SaveChangesAsync();
+
+                return true; // Wygenerowano nowy link aktywacyjny
+            }
+
+            return false; // Link aktywacyjny jest wciąż aktywny lub użytkownik jest już zweryfikowany
         }
     }
 }

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using NextVer.Domain.DTOs;
+using NextVer.Domain.Email.Builders;
 using NextVer.Domain.Models;
 using NextVer.Infrastructure.Interfaces;
 using System.IdentityModel.Tokens.Jwt;
@@ -20,13 +21,14 @@ namespace NextVerBackend.Controllers
         private readonly IConfiguration _configuration;
         private readonly IAuthRepository _authRepository;
         private readonly IMapper _mapper;
+        private readonly IEmailService _emailService;
 
-
-        public AuthController(IConfiguration configuration, IAuthRepository authRepository, IMapper mapper)
+        public AuthController(IConfiguration configuration, IAuthRepository authRepository, IMapper mapper, IEmailService emailService)
         {
             _configuration = configuration;
             _authRepository = authRepository;
             _mapper = mapper;
+            _emailService = emailService;
         }
 
         [HttpPost("register")]
@@ -45,7 +47,12 @@ namespace NextVerBackend.Controllers
 
             var registeredUser = await _authRepository.Register(user, userForRegister.Password);
 
-            return registeredUser == null ? StatusCode((int)HttpStatusCode.InternalServerError) : Ok();
+            if (registeredUser == null)
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+
+            var result = await SendEmail(registeredUser);
+
+            return result ? Ok() : StatusCode((int)HttpStatusCode.InternalServerError);
         }
 
         [HttpPost("login")]
@@ -59,10 +66,26 @@ namespace NextVerBackend.Controllers
             if (user == null)
                 return Unauthorized();
 
+            var isLinkRenewed = await _authRepository.CheckAndRenewActivationLink(user);
+
+            if (!user.IsVerified)
+            {
+                if (isLinkRenewed)
+                {
+                    var result = await SendEmail(user);
+
+                    return result ? Unauthorized("Please confirm your e-mail address first. The previous activation link has expired, so a new one was sent.")
+                        : StatusCode((int)HttpStatusCode.InternalServerError);
+                }
+
+                return Unauthorized("Please confirm your e-mail address first. The activation link is still valid.");
+            }
+
             var claims = new[]
-                        {
+            {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.Username)
+                new Claim(ClaimTypes.Name, user.Username),
+                new Claim(ClaimTypes.Role, user.UserTypeId.ToString())
             };
 
             SymmetricSecurityKey key;
@@ -96,6 +119,30 @@ namespace NextVerBackend.Controllers
                 {
                     token = tokenHandler.WriteToken(token)
                 });
+        }
+
+        [HttpGet("confirmEmail")]
+        [ProducesResponseType(typeof(string), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> ConfirmEmail(string token, string username)
+        {
+            var result = await _authRepository.ConfirmEmail(token, username);
+
+            return result ? Ok("Email confirmed.") : Unauthorized("Verification link is not valid.");
+        }
+
+        private async Task<bool> SendEmail(User user)
+        {
+            var userType = await _authRepository.GetById(user.Id);
+            var userTypeName = userType.UserType?.Name ?? "Unknown";
+            var emailActionLink = Url.Action("ConfirmEmail", "Auth",
+                new { Token = user.ConfirmationToken, Username = user.Username },
+                ControllerContext.HttpContext.Request.Scheme);
+
+            var message = ConfirmationEmailBuilder.BuildConfirmationMessage(user.Email, user.Username, emailActionLink, user.FirstName, user.LastName, userTypeName, user.City, user.Country, user.CreatedAt.ToString());
+
+            return await _emailService.SendEmail(message);
         }
     }
 }
