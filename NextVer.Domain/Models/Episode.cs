@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using NextVer.Infrastructure.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
 namespace NextVer.Domain.Models
 {
-    public class Episode
+    public class Episode : IEntityWithLinkIds
     {
         public int Id { get; set; }
         public int TvShowId { get; set; }

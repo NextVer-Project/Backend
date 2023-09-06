@@ -1,6 +1,8 @@
-﻿namespace NextVer.Domain.Models
+﻿using NextVer.Infrastructure.Interfaces;
+
+namespace NextVer.Domain.Models
 {
-    public class ProductionVersion
+    public class ProductionVersion : IEntityWithLinkIds
     {
         public int Id { get; set; }
         public int IdMovieTVSerieGame { get; set; }

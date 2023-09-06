@@ -1,6 +1,8 @@
-﻿namespace NextVer.Domain.Models
+﻿using NextVer.Infrastructure.Interfaces;
+
+namespace NextVer.Domain.Models
 {
-    public class Universe
+    public class Universe : IEntityWithLinkIds
     {
         public int Id { get; set; }
         public string Name { get; set; }

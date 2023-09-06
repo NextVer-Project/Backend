@@ -1,6 +1,8 @@
-﻿namespace NextVer.Domain.Models
+﻿using NextVer.Infrastructure.Interfaces;
+
+namespace NextVer.Domain.Models
 {
-    public class TechnologyType
+    public class TechnologyType : IEntityWithLinkIds
     {
         public int Id { get; set; }
         public string Name { get; set; }

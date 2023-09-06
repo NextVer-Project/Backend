@@ -1,6 +1,8 @@
-﻿namespace NextVer.Domain.Models
+﻿using NextVer.Infrastructure.Interfaces;
+
+namespace NextVer.Domain.Models
 {
-    public class Notification
+    public class Notification : IEntityWithLinkIds
     {
         public int Id { get; set; }
         public int UserId { get; set; }

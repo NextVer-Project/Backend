@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using NextVer.Infrastructure.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
 namespace NextVer.Domain.Models
 {
-    public class Movie
+    public class Movie : IEntityWithLinkIds
     {
         public int Id { get; set; }
         [Required]
@@ -23,6 +24,7 @@ namespace NextVer.Domain.Models
         public int ViewCounter { get; set; }
 
         public virtual User User { get; set; }
+
         public virtual ICollection<MovieUniverse> MovieUniverses { get; set; }
         public virtual ICollection<MovieGenre> MovieGenres { get; set; }
     }
