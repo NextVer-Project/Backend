@@ -1,6 +1,6 @@
 [
   {
-    "Username": "user1",
+    "Username": "string",
     "FirstName": "John",
     "LastName": "Doe",
     "Country": "USA",
@@ -8,7 +8,7 @@
     "Email": "user1@example.com",
     "UserTypeId": 1,
     "UserLogoUrl": "https://example.com/user1.jpg",
-    "IsVerified": false,
+    "IsVerified": true,
     "IsDeleted": false,
     "NotificationsAgreement": false,
     "CreatedAt": "2022-01-01T12:00:00",

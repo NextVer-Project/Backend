@@ -48,10 +48,7 @@ namespace NextVer.Infrastructure.Persistence.DbSeed
         {
             using (var hmac = new HMACSHA512())
             {
-                var salt = new byte[64];
-                RandomNumberGenerator.Fill(salt);
-
-                passwordSalt = salt;
+                passwordSalt = hmac.Key;
                 passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
             }
         }
@@ -65,7 +62,7 @@ namespace NextVer.Infrastructure.Persistence.DbSeed
                 var users = JsonSerializer.Deserialize<List<User>>(userData);
                 foreach (var user in users)
                 {
-                    CreatePasswordHash("password", out var passwordHash, out var passwordSalt);
+                    CreatePasswordHash("string", out var passwordHash, out var passwordSalt);
 
                     user.PasswordHash = passwordHash;
                     user.PasswordSalt = passwordSalt;
