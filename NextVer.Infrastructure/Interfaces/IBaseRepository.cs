@@ -13,9 +13,11 @@ namespace NextVer.Infrastructure.Interfaces
          )
              where TEntity : class
              where TLinkEntity : class, new();
+
         void AddLinkEntity<TLinkEntity>(TLinkEntity entity) where TLinkEntity : class;
         void RemoveLinkEntity<TLinkEntity>(TLinkEntity entity) where TLinkEntity : class;
         Task<T> GetById(int id, params Expression<Func<T, object>>[] includes);
+        Task<bool> Update(T entity);
         Task<bool> SaveChangesAsync();
         Task<int> GetNumberOfEntities<T>() where T : class;
         Task<IEnumerable<TEntity>> GetEntitiesBy<TEntity>(Expression<Func<TEntity, bool>> filterExpression)
