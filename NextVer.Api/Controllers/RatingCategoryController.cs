@@ -73,5 +73,16 @@ namespace NextVerBackend.Controllers
 
             return result ? Ok() : StatusCode((int)HttpStatusCode.InternalServerError);
         }
+
+        [HttpGet("{ratingCategoryId}/details")]
+        [AllowAnonymous]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetRatingCategoryById(int ratingCategoryId)
+        {
+            var ratingCategory = await _ratingCategoryRepository.GetById(ratingCategoryId);
+            return Ok(ratingCategory);
+        }
     }
 }

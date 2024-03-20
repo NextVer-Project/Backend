@@ -76,5 +76,16 @@ namespace NextVerBackend.Controllers
 
             return result ? Ok() : StatusCode((int)HttpStatusCode.InternalServerError);
         }
+
+        [HttpGet("{notificationId}/details")]
+        [AllowAnonymous]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetNotificationById(int notificationId)
+        {
+            var notification = await _notificationRepository.GetById(notificationId);
+            return Ok(notification);
+        }
     }
 }

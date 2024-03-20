@@ -73,5 +73,16 @@ namespace NextVerBackend.Controllers
 
             return result ? Ok() : StatusCode((int)HttpStatusCode.InternalServerError);
         }
+
+        [HttpGet("{productionTypeId}/details")]
+        [AllowAnonymous]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetProductionTypeById(int productionTypeId)
+        {
+            var productionType = await _productionTypeRepository.GetById(productionTypeId);
+            return Ok(productionType);
+        }
     }
 }

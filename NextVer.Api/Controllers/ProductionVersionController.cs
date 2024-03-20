@@ -121,5 +121,13 @@ namespace NextVerBackend.Controllers
 
             return result ? Ok() : StatusCode((int)HttpStatusCode.InternalServerError);
         }
+
+        [AllowAnonymous]
+        [HttpGet("{productionVersionId}/details")]
+        public async Task<IActionResult> GetTechnologiesByMovieVersion(int productionVersionId)
+        {
+            var technologies = await _productionVersionRepository.GetEntitiesBy<ProductionVersion>(p => p.ProductionTechnologies.Any(pv => pv.ProductionVersionId == productionVersionId));
+            return Ok(technologies);
+        }
     }
 }

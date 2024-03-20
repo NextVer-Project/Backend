@@ -73,5 +73,16 @@ namespace NextVerBackend.Controllers
 
             return result ? Ok() : StatusCode((int)HttpStatusCode.InternalServerError);
         }
+
+        [HttpGet("{mediaGalleryTypeId}/details")]
+        [AllowAnonymous]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetMediaGalleryTypeById(int mediaGalleryTypeId)
+        {
+            var mediaGalleryType = await _mediaGalleryTypeRepository.GetById(mediaGalleryTypeId);
+            return Ok(mediaGalleryType);
+        }
     }
 }
