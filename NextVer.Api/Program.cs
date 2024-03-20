@@ -20,6 +20,7 @@ builder.Services.AddDbContext<NextVerDbContext>(options => options
 builder.Services.AddControllers();
 builder.Services.ConfigureSwagger();
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
+builder.Services.AddCors();
 builder.Services.ConfigureDependencyInjection();
 builder.Services.ConfigureHangfire(configuration);
 
@@ -65,6 +66,13 @@ app.UseSwaggerUI(c =>
 });
 
 app.UseRouting();
+
+app.UseCors(x => x
+    .WithOrigins("http://localhost:4200")
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .AllowCredentials());
+
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
