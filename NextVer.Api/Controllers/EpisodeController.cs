@@ -16,12 +16,14 @@ namespace NextVerBackend.Controllers
     {
         private readonly IBaseRepository<TvShow> _tvShowRepository;
         private readonly IBaseRepository<Episode> _episodeRepository;
+        private readonly ITvShowRepository _specificTvShowRepository;
         private readonly IMapper _mapper;
 
-        public EpisodeController(IBaseRepository<TvShow> tvShowRepository, IBaseRepository<Episode> episodeRepository, IMapper mapper)
+        public EpisodeController(IBaseRepository<TvShow> tvShowRepository, IBaseRepository<Episode> episodeRepository, ITvShowRepository specificTvShowRepository, IMapper mapper)
         {
             _tvShowRepository = tvShowRepository;
             _episodeRepository = episodeRepository;
+            _specificTvShowRepository = specificTvShowRepository;
             _mapper = mapper;
         }
 
@@ -41,16 +43,27 @@ namespace NextVerBackend.Controllers
             if (tvShow == null)
                 return BadRequest("TvShow not found.");
 
+            var existingEpisode = await _specificTvShowRepository.GetEpisodeByNumberAndSeason(episodeForAddDto.TvShowId, episodeForAddDto.SeasonNumber, episodeForAddDto.EpisodeNumber);
+            if (existingEpisode != null)
+            {
+                return BadRequest($"Episode with number {episodeForAddDto.EpisodeNumber} already exists in season {episodeForAddDto.SeasonNumber} of {tvShow.Title} series.");
+            }
+
             var episode = _mapper.Map<Episode>(episodeForAddDto);
             episode.UserId = userId;
             episode.ViewCounter = 0;
             episode.IsApproved = false;
 
+            var tvShowId = episode.TvShowId;
             var result = await _episodeRepository.Add(episode);
+
+            if (result)
+            {
+                await UpdateTvShowRuntime(tvShowId);
+            }
 
             return result ? Ok() : StatusCode((int)HttpStatusCode.InternalServerError);
         }
-
 
         [HttpPatch("edit")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
@@ -66,7 +79,13 @@ namespace NextVerBackend.Controllers
             if (existingTvShow == null)
                 return BadRequest("TvShow not found.");
 
+            var tvShowId = existingTvShow.TvShowId;
             var result = await _episodeRepository.Edit(episodeForEditDto.Id, episodeForEditDto);
+
+            if (result)
+            {
+                await UpdateTvShowRuntime(tvShowId);
+            }
 
             return result ? Ok() : StatusCode((int)HttpStatusCode.InternalServerError);
         }
@@ -85,9 +104,33 @@ namespace NextVerBackend.Controllers
             if (episode == null)
                 return BadRequest("Episode not found.");
 
+            if (episode.EpisodeNumber == 1 && episode.SeasonNumber == 1)
+            {
+                return BadRequest("Cannot delete the first episode of the first season.");
+            }
+
+            var tvShowId = episode.TvShowId;
             var result = await _episodeRepository.Delete(id);
 
+            if (result)
+            {
+                await UpdateTvShowRuntime(tvShowId);
+            }
+
             return result ? Ok() : StatusCode((int)HttpStatusCode.InternalServerError);
+        }
+
+        private async Task UpdateTvShowRuntime(int tvShowId)
+        {
+            var duration = await _specificTvShowRepository.GetTotalDurationForTvShowInSeconds(tvShowId);
+
+            var tvShow = await _tvShowRepository.GetById(tvShowId);
+            if (tvShow != null)
+            {
+                string totalDurationString = TimeSpan.FromSeconds(duration).ToString(@"d\:hh\:mm\:ss");
+                tvShow.Runtime = totalDurationString;
+                await _tvShowRepository.Update(tvShow);
+            }
         }
     }
 }

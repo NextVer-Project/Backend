@@ -3,7 +3,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NextVer.Domain.DTOs;
 using NextVer.Domain.Models;
+using NextVer.Infrastructure.Helpers;
+using NextVer.Infrastructure.Helpers.PaginationParameters;
 using NextVer.Infrastructure.Interfaces;
+using NextVerBackend.Extensions;
 using NextVerBackend.Helpers;
 using System.Net;
 
@@ -15,12 +18,13 @@ namespace NextVerBackend.Controllers
     public class TvShowController : ControllerBase
     {
         private readonly IBaseRepository<TvShow> _tvShowRepository;
-        //private readonly ITvShowRepository _tvShowRepository;
+        private readonly ITvShowRepository _specificTvShowRepository;
         private readonly IMapper _mapper;
 
-        public TvShowController(IBaseRepository<TvShow> tvShowRepository, IMapper mapper)
+        public TvShowController(IBaseRepository<TvShow> tvShowRepository, ITvShowRepository specificTvShowRepository, IMapper mapper)
         {
             _tvShowRepository = tvShowRepository;
+            _specificTvShowRepository = specificTvShowRepository;
             _mapper = mapper;
         }
 
@@ -37,6 +41,7 @@ namespace NextVerBackend.Controllers
             tvShow.UserId = userId;
             tvShow.CreatedAt = DateTime.UtcNow;
             tvShow.UpdatedAt = DateTime.UtcNow;
+            tvShow.TrailerUrl = VideoLinkHelper.ConvertVideoLink(tvShow.TrailerUrl);
 
             var result = await _tvShowRepository.Add(tvShow);
 
@@ -148,6 +153,8 @@ namespace NextVerBackend.Controllers
                 _tvShowRepository.AddLinkEntity(tvShowUniverseToAdd);
             }
 
+            existingTvShow.TrailerUrl = VideoLinkHelper.ConvertVideoLink(existingTvShow.TrailerUrl);
+
             var result = await _tvShowRepository.Edit(tvShowForEditDto.Id, tvShowForEditDto);
 
             return result ? Ok() : StatusCode((int)HttpStatusCode.InternalServerError);
@@ -207,6 +214,50 @@ namespace NextVerBackend.Controllers
             };
         }
 
+        [HttpGet("season/duration/{tvShowId}/{seasonNum}/minutes")]
+        [AllowAnonymous]
+        [ProducesResponseType(typeof(int), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(string), (int)HttpStatusCode.Unauthorized)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetSeasonDurationForTvShowInMinutes(int tvShowId, int seasonNum)
+        {
+            var tvShows = await _specificTvShowRepository.GetSeasonDurationForTvShowInMinutes(tvShowId, seasonNum);
+            return Ok(tvShows);
+        }
+
+        [HttpGet("season/duration/{tvShowId}/minutes")]
+        [AllowAnonymous]
+        [ProducesResponseType(typeof(int), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(string), (int)HttpStatusCode.Unauthorized)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetTotalDurationForTvShowInMinutes(int tvShowId)
+        {
+            var tvShows = await _specificTvShowRepository.GetTotalDurationForTvShowInMinutes(tvShowId);
+            return Ok(tvShows);
+        }
+
+        [HttpGet("season/duration/{tvShowId}/{seasonNum}/seconds")]
+        [AllowAnonymous]
+        [ProducesResponseType(typeof(int), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(string), (int)HttpStatusCode.Unauthorized)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetSeasonDurationForTvShowInSeconds(int tvShowId, int seasonNum)
+        {
+            var tvShows = await _specificTvShowRepository.GetSeasonDurationForTvShowInSeconds(tvShowId, seasonNum);
+            return Ok(tvShows);
+        }
+
+        [HttpGet("season/duration/{tvShowId}/seconds")]
+        [AllowAnonymous]
+        [ProducesResponseType(typeof(int), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(string), (int)HttpStatusCode.Unauthorized)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetTotalDurationForTvShowInSeconds(int tvShowId)
+        {
+            var tvShows = await _specificTvShowRepository.GetTotalDurationForTvShowInSeconds(tvShowId);
+            return Ok(tvShows);
+        }
+
         [HttpGet("tvShows/genre/{genreId}")]
         public async Task<IActionResult> GetTvShowsByGenre(int genreId)
         {
@@ -214,11 +265,25 @@ namespace NextVerBackend.Controllers
             return Ok(tvShows);
         }
 
+        [HttpGet("tvShows/{tvShowId}/genres")]
+        public async Task<IActionResult> GetGenresByTvShow(int tvShowId)
+        {
+            var genres = await _tvShowRepository.GetEntitiesBy<Genre>(m => m.TvShowGenres.Any(mu => mu.TvShowId == tvShowId));
+            return Ok(genres);
+        }
+
         [HttpGet("tvShows/universe/{universeId}")]
         public async Task<IActionResult> GetTvShowsByUniverse(int universeId)
         {
             var tvShows = await _tvShowRepository.GetEntitiesBy<TvShow>(m => m.TvShowUniverses.Any(mu => mu.UniverseId == universeId));
             return Ok(tvShows);
+        }
+
+        [HttpGet("tvShows/{tvShowId}/universes")]
+        public async Task<IActionResult> GetUniversesByTvShow(int tvShowId)
+        {
+            var universes = await _tvShowRepository.GetEntitiesBy<Universe>(m => m.TvShowUniverses.Any(mu => mu.TvShowId == tvShowId));
+            return Ok(universes);
         }
 
         [HttpGet("search")]
@@ -256,6 +321,24 @@ namespace NextVerBackend.Controllers
         {
             var result = await _tvShowRepository.GetEntitiesBy<TvShow>(m => m.UserId == userId);
             return result != null ? Ok(result) : StatusCode((int)HttpStatusCode.InternalServerError);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        [ProducesResponseType(typeof(PagedList<TvShowForListDto>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetTvShows([FromQuery] ProductionParameters parameters)
+        {
+            var tvShows = await _specificTvShowRepository.GetTvShows(parameters);
+
+            if (tvShows == null || !tvShows.Any())
+                return BadRequest("Could not find any tv shows");
+
+            Response.AddPaginationHeader(tvShows.CurrentPage, tvShows.PageSize, tvShows.TotalCount, tvShows.TotalPages);
+
+            return Ok(tvShows);
         }
     }
 }
