@@ -18,6 +18,8 @@ namespace NextVer.Domain.Models
         public DateTime UpdatedAt { get; set; }
         public int UserId { get; set; }
         public int ViewCounter { get; set; }
+        public string Runtime { get; set; }
+
 
         public virtual User User { get; set; }
         public virtual ICollection<Episode> Episodes { get; set; }
