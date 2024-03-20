@@ -14,9 +14,14 @@ namespace NextVerBackend.Helpers
             CreateMap<MovieForAddDto, Movie>();
             CreateMap<MovieForEditDto, Movie>();
             CreateMap<MovieCountDto, Movie>();
+            CreateMap<Movie, MovieForListDto>();
             CreateMap<TvShowForAddDto, TvShow>();
             CreateMap<TvShowForEditDto, TvShow>();
             CreateMap<TvShowCountDto, TvShow>();
+            CreateMap<TvShow, TvShowForListDto>()
+                .ForMember(dest => dest.ReleaseDate, opt => opt.MapFrom(src => src.Episodes
+                    .Where(e => e.SeasonNumber == 1 && e.EpisodeNumber == 1)
+                    .Min(e => e.ReleaseDate)));
             CreateMap<EpisodeForAddDto, Episode>();
             CreateMap<EpisodeForEditDto, Episode>();
             CreateMap<ReleasePlaceTypeForAddDto, ReleasePlaceType>();
@@ -55,6 +60,7 @@ namespace NextVerBackend.Helpers
             CreateMap<ProductionVersionForEditDto, ProductionVersion>();
             CreateMap<CommentForAddDto, Comment>();
             CreateMap<CommentForEditDto, Comment>();
+            CreateMap<ProductionVersion, ProductionVersionDetailsDto>();
         }
     }
 }
