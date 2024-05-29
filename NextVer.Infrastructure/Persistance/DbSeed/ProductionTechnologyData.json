@@ -5,6 +5,14 @@
   },
   {
     "ProductionVersionId": 1,
+    "TechnologyId": 2
+  },
+  {
+    "ProductionVersionId": 1,
+    "TechnologyId": 4
+  },
+  {
+    "ProductionVersionId": 1,
     "TechnologyId": 7
   },
   {
@@ -226,5 +234,33 @@
   {
     "ProductionVersionId": 20,
     "TechnologyId": 6
+  },
+  {
+    "ProductionVersionId": 33,
+    "TechnologyId": 1
+  },
+  {
+    "ProductionVersionId": 33,
+    "TechnologyId": 2
+  },
+  {
+    "ProductionVersionId": 33,
+    "TechnologyId": 3
+  },
+  {
+    "ProductionVersionId": 33,
+    "TechnologyId": 4
+  },
+  {
+    "ProductionVersionId": 33,
+    "TechnologyId": 5
+  },
+  {
+    "ProductionVersionId": 44,
+    "TechnologyId": 1
+  },
+  {
+    "ProductionVersionId": 44,
+    "TechnologyId": 2
   }
 ]

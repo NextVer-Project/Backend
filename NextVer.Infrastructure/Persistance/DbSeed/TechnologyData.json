@@ -15,12 +15,12 @@
     "Name": "3D Technology",
     "Description": "Technologies that enable three-dimensional image display.",
     "LogoUrl": "https://example.com/3d_logo.png",
-    "TechnologyTypeId": 2
+    "TechnologyTypeId": 4
   },
   {
     "Name": "Dolby Atmos",
     "Description": "Immersive audio technology by Dolby Laboratories.",
-    "LogoUrl": "https://example.com/dolby_atmos_logo.png",
+    "LogoUrl": "https://upload.wikimedia.org/wikipedia/en/a/a8/Dolby_Atmos_%28logo%29.svg",
     "TechnologyTypeId": 1
   },
   {
@@ -44,7 +44,7 @@
   {
     "Name": "Dolby Vision",
     "Description": "Advanced HDR technology by Dolby Laboratories.",
-    "LogoUrl": "https://example.com/dolby_vision_logo.png",
+    "LogoUrl": "https://upload.wikimedia.org/wikipedia/en/3/3f/Dolby_Vision_%28logo%29.svg",
     "TechnologyTypeId": 3
   },
   {
