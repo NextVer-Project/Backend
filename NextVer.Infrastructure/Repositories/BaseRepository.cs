@@ -108,6 +108,33 @@ namespace NextVer.Infrastructure.Repositories
             }
         }
 
+        public async Task<bool> Update(T entity)
+        {
+            try
+            {
+                _context.Set<T>().Update(entity);
+                return await _context.SaveChangesAsync() > 0;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+
+        public async Task<IEnumerable<T>> GetAll()
+        {
+            try
+            {
+                return await _context.Set<T>().ToListAsync();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
+        }
+
         public IQueryable<TLinkEntity> GetLinkEntitiesFor<TEntity, TLinkEntity>(
             Expression<Func<TLinkEntity, bool>> filterExpression
         )
@@ -137,6 +164,25 @@ namespace NextVer.Infrastructure.Repositories
             {
                 Console.WriteLine(e);
                 return false;
+            }
+        }
+
+        public async Task<bool> SaveChangesWithTransactionAsync()
+        {
+            using (var transaction = await _context.Database.BeginTransactionAsync())
+            {
+                try
+                {
+                    await _context.SaveChangesAsync();
+                    await transaction.CommitAsync();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    await transaction.RollbackAsync();
+                    return false;
+                }
             }
         }
 
