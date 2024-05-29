@@ -84,5 +84,16 @@ namespace NextVerBackend.Controllers
             var technologyType = await _technologyTypeRepository.GetById(technologyTypeId);
             return Ok(technologyType);
         }
+
+        [HttpGet("all")]
+        [AllowAnonymous]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetAll()
+        {
+            var technologies = await _technologyTypeRepository.GetAll();
+            return Ok(technologies);
+        }
     }
 }
