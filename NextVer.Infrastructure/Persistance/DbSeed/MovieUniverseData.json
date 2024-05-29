@@ -1,14 +1,14 @@
 [
   {
     "MovieId": 1,
-    "UniverseId": 1
-  },
-  {
-    "MovieId": 1,
     "UniverseId": 2
   },
   {
-    "MovieId": 1,
+    "MovieId": 2,
+    "UniverseId": 2
+  },
+  {
+    "MovieId": 2,
     "UniverseId": 3
   },
   {

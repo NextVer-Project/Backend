@@ -353,7 +353,7 @@
   {
     "IdMovieTVSerieGame": 1,
     "ProductionTypeId": 1,
-    "ReleasePlaceId": 2,
+    "ReleasePlaceId": 1,
     "LinkToProductionVersion": "https://vod1.com/movie1",
     "ReleasedDate": "2022-01-01T12:00:00",
     "IsApproved": true,
@@ -361,59 +361,59 @@
     "CreatedAt": "2022-01-01T12:00:00",
     "UpdatedAt": "2022-01-01T12:00:00",
     "UserId": 4,
-    "ViewCounter": 0
-  },
-  {
-    "IdMovieTVSerieGame": 1,
-    "ProductionTypeId": 1,
-    "ReleasePlaceId": 1,
-    "LinkToProductionVersion": "https://vod2.com/movie1",
-    "ReleasedDate": "2022-02-01T15:30:00",
-    "IsApproved": true,
-    "IsAvailable": true,
-    "CreatedAt": "2022-02-01T15:30:00",
-    "UpdatedAt": "2022-02-01T15:30:00",
-    "UserId": 1,
-    "ViewCounter": 0
+    "ViewCounter": 1712
   },
   {
     "IdMovieTVSerieGame": 1,
     "ProductionTypeId": 1,
     "ReleasePlaceId": 2,
+    "LinkToProductionVersion": "https://vod2.com/movie1",
+    "ReleasedDate": "2022-02-21T15:30:00",
+    "IsApproved": true,
+    "IsAvailable": true,
+    "CreatedAt": "2022-02-01T15:30:00",
+    "UpdatedAt": "2022-02-01T15:30:00",
+    "UserId": 1,
+    "ViewCounter": 2342
+  },
+  {
+    "IdMovieTVSerieGame": 1,
+    "ProductionTypeId": 1,
+    "ReleasePlaceId": 8,
     "LinkToProductionVersion": "https://vod3.com/movie1",
-    "ReleasedDate": "2022-03-01T19:45:00",
+    "ReleasedDate": "2022-03-17T19:45:00",
     "IsApproved": true,
     "IsAvailable": true,
     "CreatedAt": "2022-03-01T19:45:00",
     "UpdatedAt": "2022-03-01T19:45:00",
     "UserId": 2,
-    "ViewCounter": 0
+    "ViewCounter": 7423
   },
   {
     "IdMovieTVSerieGame": 1,
     "ProductionTypeId": 1,
-    "ReleasePlaceId": 3,
+    "ReleasePlaceId": 10,
     "LinkToProductionVersion": "https://vod4.com/movie1",
-    "ReleasedDate": "2022-04-01T08:15:00",
+    "ReleasedDate": "2022-04-26T08:15:00",
     "IsApproved": true,
     "IsAvailable": true,
     "CreatedAt": "2022-04-01T08:15:00",
     "UpdatedAt": "2022-04-01T08:15:00",
     "UserId": 3,
-    "ViewCounter": 0
+    "ViewCounter": 4557
   },
   {
     "IdMovieTVSerieGame": 1,
     "ProductionTypeId": 1,
-    "ReleasePlaceId": 4,
+    "ReleasePlaceId": 14,
     "LinkToProductionVersion": "https://vod5.com/movie1",
-    "ReleasedDate": "2022-05-01T10:45:00",
+    "ReleasedDate": "2022-05-12T10:45:00",
     "IsApproved": true,
     "IsAvailable": true,
     "CreatedAt": "2022-05-01T10:45:00",
     "UpdatedAt": "2022-05-01T10:45:00",
     "UserId": 4,
-    "ViewCounter": 0
+    "ViewCounter": 121
   },
   {
     "IdMovieTVSerieGame": 2,

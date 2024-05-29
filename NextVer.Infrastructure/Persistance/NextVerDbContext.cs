@@ -62,6 +62,8 @@ namespace NextVer.Infrastructure.Persistance
 
             modelBuilder.Entity<MovieGenre>()
                 .HasKey(x => new { x.MovieId, x.GenreId });
+            /*            modelBuilder.Entity<MovieGenre>()
+                            .Ignore(mg => mg.LinkedEntity);*/
             modelBuilder.Entity<MovieUniverse>()
                 .HasKey(x => new { x.MovieId, x.UniverseId });
             modelBuilder.Entity<TvShowGenre>()
