@@ -296,7 +296,7 @@ namespace NextVerBackend.Controllers
                 return NotFound($"Movie with ID {movieId} not found.");
             }
         }
-
+        [AllowAnonymous]
         [HttpGet("search")]
         [ProducesResponseType(typeof(IEnumerable<Movie>), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
