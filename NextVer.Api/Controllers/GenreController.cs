@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NextVer.Domain.DTOs;
 using NextVer.Domain.Models;
+using NextVer.Infrastructure.Helpers;
 using NextVer.Infrastructure.Interfaces;
 using NextVerBackend.Helpers;
 using System.Net;
@@ -72,6 +73,22 @@ namespace NextVerBackend.Controllers
             var result = await _genreRepository.Delete(id);
 
             return result ? Ok() : StatusCode((int)HttpStatusCode.InternalServerError);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        [ProducesResponseType(typeof(PagedList<MovieForListDto>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetGenres()
+        {
+            var universes = await _genreRepository.GetAll();
+
+            if (universes == null || !universes.Any())
+                return BadRequest("Could not find any genres");
+
+            return Ok(universes);
         }
     }
 }
