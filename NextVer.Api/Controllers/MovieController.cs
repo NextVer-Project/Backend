@@ -354,5 +354,13 @@ namespace NextVerBackend.Controllers
 
             return Ok(movies);
         }
+
+        [AllowAnonymous]
+        [HttpGet("{movieId}")]
+        public async Task<IActionResult> GetMovieById(int movieId)
+        {
+            var movie = await _movieRepository.GetById(movieId);
+            return Ok(movie);
+        }
     }
 }
