@@ -1,114 +1,114 @@
 [
-  {
-    "Name": "Netflix",
-    "Description": "Online streaming platform",
-    "LogoUrl": "https://example.com/netflix_logo.png",
-    "LinkUrl": "https://www.netflix.com/",
-    "ReleasePlaceTypeId": 1
-  },
-  {
-    "Name": "Amazon Prime Video",
-    "Description": "Online streaming platform",
-    "LogoUrl": "https://example.com/amazon_prime_logo.png",
-    "LinkUrl": "https://www.primevideo.com/",
-    "ReleasePlaceTypeId": 1
-  },
-  {
-    "Name": "HBO Max",
-    "Description": "Online streaming platform",
-    "LogoUrl": "https://example.com/hbo_max_logo.png",
-    "LinkUrl": "https://www.hbomax.com/",
-    "ReleasePlaceTypeId": 1
-  },
-  {
-    "Name": "Cinema Paradiso",
-    "Description": "Independent movie theater",
-    "LogoUrl": "https://example.com/cinema_paradiso_logo.png",
-    "LinkUrl": "https://www.cinemaparadiso.com/",
-    "ReleasePlaceTypeId": 6
-  },
-  {
-    "Name": "Film Festival",
-    "Description": "Annual international film festival",
-    "LogoUrl": "https://example.com/film_festival_logo.png",
-    "LinkUrl": "https://www.filmfestival.com/",
-    "ReleasePlaceTypeId": 3
-  },
-  {
-    "Name": "Digital Download Store",
-    "Description": "Online store for digital downloads",
-    "LogoUrl": "https://example.com/digital_download_store_logo.png",
-    "LinkUrl": "https://www.digitaldownloadstore.com/",
-    "ReleasePlaceTypeId": 2
-  },
-  {
-    "Name": "Limited Release Theater",
-    "Description": "Theater with limited release screenings",
-    "LogoUrl": "https://example.com/limited_release_theater_logo.png",
-    "LinkUrl": "https://www.limitedreleasetheater.com/",
-    "ReleasePlaceTypeId": 4
-  },
-  {
-    "Name": "DVD Store",
-    "Description": "Physical store for DVD purchases",
-    "LogoUrl": "https://example.com/dvd_store_logo.png",
-    "LinkUrl": "https://www.dvdstore.com/",
-    "ReleasePlaceTypeId": 7
-  },
-  {
-    "Name": "Blu-ray Store",
-    "Description": "Physical store for Blu-ray purchases",
-    "LogoUrl": "https://example.com/blu_ray_store_logo.png",
-    "LinkUrl": "https://www.bluraystore.com/",
-    "ReleasePlaceTypeId": 8
-  },
-  {
-    "Name": "Ultra HD Blu-ray Store",
-    "Description": "Physical store for Ultra HD Blu-ray purchases",
-    "LogoUrl": "https://example.com/ultra_hd_bluray_store_logo.png",
-    "LinkUrl": "https://www.uhdbluraystore.com/",
-    "ReleasePlaceTypeId": 9
-  },
-  {
-    "Name": "Streaming Service",
-    "Description": "Online streaming service",
-    "LogoUrl": "https://example.com/streaming_service_logo.png",
-    "LinkUrl": "https://www.streamingservice.com/",
-    "ReleasePlaceTypeId": 10
-  },
-  {
-    "Name": "Broadcast Network",
-    "Description": "Television broadcast network",
-    "LogoUrl": "https://example.com/broadcast_network_logo.png",
-    "LinkUrl": "https://www.broadcastnetwork.com/",
-    "ReleasePlaceTypeId": 11
-  },
-  {
-    "Name": "Disney+",
-    "Description": "Online streaming platform",
-    "LogoUrl": "https://example.com/disney_plus_logo.png",
-    "LinkUrl": "https://www.disneyplus.com/",
-    "ReleasePlaceTypeId": 1
-  },
-  {
-    "Name": "Apple TV+",
-    "Description": "Online streaming platform",
-    "LogoUrl": "https://example.com/apple_tv_plus_logo.png",
-    "LinkUrl": "https://www.apple.com/apple-tv-plus/",
-    "ReleasePlaceTypeId": 1
-  },
-  {
-    "Name": "Google Play Movies & TV",
-    "Description": "Online store for digital movie and TV show purchases",
-    "LogoUrl": "https://example.com/google_play_movies_logo.png",
-    "LinkUrl": "https://play.google.com/store/movies",
-    "ReleasePlaceTypeId": 2
-  },
-  {
-    "Name": "Paramount+",
-    "Description": "Online streaming platform",
-    "LogoUrl": "https://example.com/paramount_plus_logo.png",
-    "LinkUrl": "https://www.paramountplus.com/",
-    "ReleasePlaceTypeId": 1
-  }
+    {
+        "Name": "Netflix",
+        "Description": "Online streaming platform",
+        "LogoUrl": "https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg",
+        "LinkUrl": "https://www.netflix.com/",
+        "ReleasePlaceTypeId": 1
+    },
+    {
+        "Name": "Amazon Prime Video",
+        "Description": "Online streaming platform",
+        "LogoUrl": "https://upload.wikimedia.org/wikipedia/commons/1/11/Amazon_Prime_Video_logo.svg",
+        "LinkUrl": "https://www.primevideo.com/",
+        "ReleasePlaceTypeId": 1
+    },
+    {
+        "Name": "HBO Max",
+        "Description": "Online streaming platform",
+        "LogoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/HBO_Max_Logo.svg/1000px-HBO_Max_Logo.svg.png",
+        "LinkUrl": "https://www.hbomax.com/",
+        "ReleasePlaceTypeId": 1
+    },
+    {
+        "Name": "YouTube",
+        "Description": "Biggest video service in the world",
+        "LogoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Logo_of_YouTube_%282015-2017%29.svg/1280px-Logo_of_YouTube_%282015-2017%29.svg.png",
+        "LinkUrl": "https://www.youtube.com/",
+        "ReleasePlaceTypeId": 6
+    },
+    {
+        "Name": "Film Festival",
+        "Description": "Annual international film festival",
+        "LogoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Apple_TV_Plus_Logo.svg/512px-Apple_TV_Plus_Logo.svg.png",
+        "LinkUrl": "https://www.filmfestival.com/",
+        "ReleasePlaceTypeId": 3
+    },
+    {
+        "Name": "Digital Download Store",
+        "Description": "Online store for digital downloads",
+        "LogoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Apple_TV_Plus_Logo.svg/512px-Apple_TV_Plus_Logo.svg.png",
+        "LinkUrl": "https://www.digitaldownloadstore.com/",
+        "ReleasePlaceTypeId": 2
+    },
+    {
+        "Name": "Limited Release Theater",
+        "Description": "Theater with limited release screenings",
+        "LogoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Apple_TV_Plus_Logo.svg/512px-Apple_TV_Plus_Logo.svg.png",
+        "LinkUrl": "https://www.limitedreleasetheater.com/",
+        "ReleasePlaceTypeId": 4
+    },
+    {
+        "Name": "DVD Store",
+        "Description": "Physical store for DVD purchases",
+        "LogoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/DVD_logo.svg/2560px-DVD_logo.svg.png",
+        "LinkUrl": "https://www.dvdstore.com/",
+        "ReleasePlaceTypeId": 7
+    },
+    {
+        "Name": "Blu-ray Store",
+        "Description": "Physical store for Blu-ray purchases",
+        "LogoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Blu_ray_logo.png/1200px-Blu_ray_logo.png",
+        "LinkUrl": "https://www.bluraystore.com/",
+        "ReleasePlaceTypeId": 8
+    },
+    {
+        "Name": "Ultra HD Blu-ray Store",
+        "Description": "Physical store for Ultra HD Blu-ray purchases",
+        "LogoUrl": "https://upload.wikimedia.org/wikipedia/commons/7/71/UHD_Blu-ray_logo.png",
+        "LinkUrl": "https://www.uhdbluraystore.com/",
+        "ReleasePlaceTypeId": 9
+    },
+    {
+        "Name": "Streaming Service",
+        "Description": "Online streaming service",
+        "LogoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Apple_TV_Plus_Logo.svg/512px-Apple_TV_Plus_Logo.svg.png",
+        "LinkUrl": "https://www.streamingservice.com/",
+        "ReleasePlaceTypeId": 10
+    },
+    {
+        "Name": "Broadcast Network",
+        "Description": "Television broadcast network",
+        "LogoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Apple_TV_Plus_Logo.svg/512px-Apple_TV_Plus_Logo.svg.png",
+        "LinkUrl": "https://www.broadcastnetwork.com/",
+        "ReleasePlaceTypeId": 11
+    },
+    {
+        "Name": "Disney+",
+        "Description": "Online streaming platform",
+        "LogoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Disney%2B_logo.svg/800px-Disney%2B_logo.svg.png",
+        "LinkUrl": "https://www.disneyplus.com/",
+        "ReleasePlaceTypeId": 1
+    },
+    {
+        "Name": "Apple TV+",
+        "Description": "Online streaming platform",
+        "LogoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Apple_TV_Plus_Logo.svg/512px-Apple_TV_Plus_Logo.svg.png",
+        "LinkUrl": "https://www.apple.com/apple-tv-plus/",
+        "ReleasePlaceTypeId": 1
+    },
+    {
+        "Name": "Google Play Movies & TV",
+        "Description": "Online store for digital movie and TV show purchases",
+        "LogoUrl": "https://cdn2.steamgriddb.com/logo_thumb/0d6a652110d37e4d630b426fd2d8d237.png",
+        "LinkUrl": "https://play.google.com/store/movies",
+        "ReleasePlaceTypeId": 2
+    },
+    {
+        "Name": "Paramount+",
+        "Description": "Online streaming platform",
+        "LogoUrl": "https://static.wikia.nocookie.net/viacom4633/images/4/44/Paramount_plus_logo_%28early_concept%29.png/revision/latest/scale-to-width-down/448?cb=20200915171647",
+        "LinkUrl": "https://www.paramountplus.com/",
+        "ReleasePlaceTypeId": 1
+    }
 ]

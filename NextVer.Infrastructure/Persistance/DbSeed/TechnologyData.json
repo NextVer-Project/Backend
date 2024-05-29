@@ -1,98 +1,98 @@
 [
-  {
-    "Name": "Full HD 1080p",
-    "Description": "Technologies related to image resolution.",
-    "LogoUrl": "https://example.com/resolution_logo.png",
-    "TechnologyTypeId": 2
-  },
-  {
-    "Name": "HDR",
-    "Description": "Technologies related to High Dynamic Range (HDR).",
-    "LogoUrl": "https://example.com/hdr_logo.png",
-    "TechnologyTypeId": 3
-  },
-  {
-    "Name": "3D Technology",
-    "Description": "Technologies that enable three-dimensional image display.",
-    "LogoUrl": "https://example.com/3d_logo.png",
-    "TechnologyTypeId": 4
-  },
-  {
-    "Name": "Dolby Atmos",
-    "Description": "Immersive audio technology by Dolby Laboratories.",
-    "LogoUrl": "https://upload.wikimedia.org/wikipedia/en/a/a8/Dolby_Atmos_%28logo%29.svg",
-    "TechnologyTypeId": 1
-  },
-  {
-    "Name": "4K Ultra HD",
-    "Description": "Ultra-high-definition resolution technology.",
-    "LogoUrl": "https://example.com/4k_ultra_hd_logo.png",
-    "TechnologyTypeId": 2
-  },
-  {
-    "Name": "HDR10+",
-    "Description": "Dynamic metadata-based HDR technology.",
-    "LogoUrl": "https://example.com/hdr10_plus_logo.png",
-    "TechnologyTypeId": 3
-  },
-  {
-    "Name": "Virtual Reality",
-    "Description": "Technologies that provide immersive virtual reality experiences.",
-    "LogoUrl": "https://example.com/vr_logo.png",
-    "TechnologyTypeId": 2
-  },
-  {
-    "Name": "Dolby Vision",
-    "Description": "Advanced HDR technology by Dolby Laboratories.",
-    "LogoUrl": "https://upload.wikimedia.org/wikipedia/en/3/3f/Dolby_Vision_%28logo%29.svg",
-    "TechnologyTypeId": 3
-  },
-  {
-    "Name": "Wireless Audio",
-    "Description": "Technologies for wireless audio transmission.",
-    "LogoUrl": "https://example.com/wireless_audio_logo.png",
-    "TechnologyTypeId": 1
-  },
-  {
-    "Name": "8K Resolution",
-    "Description": "8K resolution technology.",
-    "LogoUrl": "https://example.com/8k_resolution_logo.png",
-    "TechnologyTypeId": 2
-  },
-  {
-    "Name": "Surround Sound",
-    "Description": "Audio technologies that create a surround sound experience.",
-    "LogoUrl": "https://example.com/surround_sound_logo.png",
-    "TechnologyTypeId": 1
-  },
-  {
-    "Name": "DTS",
-    "Description": "Digital Theater Systems audio technology.",
-    "LogoUrl": "https://example.com/dts_logo.png",
-    "TechnologyTypeId": 1
-  },
-  {
-    "Name": "DTS:X",
-    "Description": "Immersive audio technology by DTS.",
-    "LogoUrl": "https://example.com/dts_x_logo.png",
-    "TechnologyTypeId": 1
-  },
-  {
-    "Name": "DTS-HD",
-    "Description": "High-definition audio technology by DTS.",
-    "LogoUrl": "https://example.com/dts_hd_logo.png",
-    "TechnologyTypeId": 1
-  },
-  {
-    "Name": "DTS Neural:X",
-    "Description": "Upmixing technology for creating immersive audio experiences.",
-    "LogoUrl": "https://example.com/dts_neural_x_logo.png",
-    "TechnologyTypeId": 1
-  },
-  {
-    "Name": "DTS Virtual:X",
-    "Description": "Virtual surround sound technology by DTS.",
-    "LogoUrl": "https://example.com/dts_virtual_x_logo.png",
-    "TechnologyTypeId": 1
-  }
+    {
+        "Name": "Full HD 1080p",
+        "Description": "Technologies related to image resolution.",
+        "LogoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Full_hd_logo.svg/1121px-Full_hd_logo.svg.png?20141016101837",
+        "TechnologyTypeId": 2
+    },
+    {
+        "Name": "4K Ultra HD",
+        "Description": "Ultra-high-definition resolution technology.",
+        "LogoUrl": "https://t4.ftcdn.net/jpg/05/33/02/23/360_F_533022360_pQ3WjgQvkL4n4oAYVHCgsJgjvJmFV9Pv.jpg",
+        "TechnologyTypeId": 2
+    },
+    {
+        "Name": "8K Resolution",
+        "Description": "8K resolution technology.",
+        "LogoUrl": "https://static.vecteezy.com/system/resources/previews/021/736/677/original/8k-ultra-hd-resolution-logo-png-vector.jpg",
+        "TechnologyTypeId": 2
+    },
+    {
+        "Name": "HDR10",
+        "Description": "Open high-dynamic-range video (HDR) standard announced, by the Consumer Technology Association. It is the most widespread HDR format.",
+        "LogoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/HDR_10_logo_%28black%29.svg/1200px-HDR_10_logo_%28black%29.svg.png",
+        "TechnologyTypeId": 3
+    },
+    {
+        "Name": "HDR10+",
+        "Description": "Dynamic metadata-based HDR technology.",
+        "LogoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/HDR10%2B_Logo.svg/640px-HDR10%2B_Logo.svg.png",
+        "TechnologyTypeId": 3
+    },
+    {
+        "Name": "Dolby Vision",
+        "Description": "Advanced HDR technology by Dolby Laboratories.",
+        "LogoUrl": "https://upload.wikimedia.org/wikipedia/en/3/3f/Dolby_Vision_%28logo%29.svg",
+        "TechnologyTypeId": 2
+    },
+    {
+        "Name": "3D Technology",
+        "Description": "Technologies that enable three-dimensional image display.",
+        "LogoUrl": "https://pbs.twimg.com/profile_images/1811416186/cinema3d_400x400.jpg",
+        "TechnologyTypeId": 4
+    },
+    {
+        "Name": "Virtual Reality",
+        "Description": "Technologies that provide immersive virtual reality experiences.",
+        "LogoUrl": "https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTEyL2pvYjk1OS1lbGVtZW50LWItMDAzNC14XzEuanBn.jpg",
+        "TechnologyTypeId": 2
+    },
+    {
+        "Name": "Dolby Atmos",
+        "Description": "Immersive audio technology by Dolby Laboratories.",
+        "LogoUrl": "https://upload.wikimedia.org/wikipedia/en/a/a8/Dolby_Atmos_%28logo%29.svg",
+        "TechnologyTypeId": 1
+    },
+    {
+        "Name": "Wireless Audio",
+        "Description": "Technologies for wireless audio transmission.",
+        "LogoUrl": "https://cdn-icons-png.flaticon.com/512/4379/4379188.png",
+        "TechnologyTypeId": 1
+    },
+    {
+        "Name": "Surround Sound",
+        "Description": "Audio technologies that create a surround sound experience.",
+        "LogoUrl": "https://upload.wikimedia.org/wikipedia/commons/4/42/Dolby_surround.jpg",
+        "TechnologyTypeId": 1
+    },
+    {
+        "Name": "DTS",
+        "Description": "Digital Theater Systems audio technology.",
+        "LogoUrl": "https://logos-world.net/wp-content/uploads/2023/01/DTS-Logo.png",
+        "TechnologyTypeId": 1
+    },
+    {
+        "Name": "DTS:X",
+        "Description": "Immersive audio technology by DTS.",
+        "LogoUrl": "https://seeklogo.com/images/D/dts-x-logo-C6B5A19EC3-seeklogo.com.png",
+        "TechnologyTypeId": 1
+    },
+    {
+        "Name": "DTS-HD",
+        "Description": "High-definition audio technology by DTS.",
+        "LogoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/DTS-HD-MA.svg/1200px-DTS-HD-MA.svg.png",
+        "TechnologyTypeId": 1
+    },
+    {
+        "Name": "DTS Neural:X",
+        "Description": "Upmixing technology for creating immersive audio experiences.",
+        "LogoUrl": "https://stickerlib.com/cdn/shop/products/DTS_Neural_Surrond_2.75x1_59b6206d-0b2e-48bb-a7e2-c641a0700f01_grande.jpg?v=1583133642",
+        "TechnologyTypeId": 1
+    },
+    {
+        "Name": "DTS Virtual:X",
+        "Description": "Virtual surround sound technology by DTS.",
+        "LogoUrl": "https://mms.businesswire.com/media/20180508005496/en/656252/22/DTS_Virtual_X_TM-Positive_copy.jpg",
+        "TechnologyTypeId": 1
+    }
 ]

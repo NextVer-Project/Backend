@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
-using NextVer.Domain.DTOs;
+﻿using NextVer.Domain.DTOs;
 using NextVer.Domain.Models;
 using NextVer.Infrastructure.Helpers;
 using NextVer.Infrastructure.Helpers.PaginationParameters;
@@ -26,7 +26,7 @@ namespace NextVer.Infrastructure.Repositories
             try
             {
                 var movies = _context.Movies.Where(x => x.ReleaseDate < DateTime.UtcNow)
-                    .OrderBy(x => x.ReleaseDate)
+                    .OrderByDescending(x => x.ReleaseDate)
                     .ProjectTo<MovieForListDto>(_mapper.ConfigurationProvider)
                     .AsNoTracking();
 
