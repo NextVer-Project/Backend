@@ -99,6 +99,7 @@ namespace NextVer.Infrastructure.Repositories
                 return true;
             }
         }
+
         public async Task<bool> ConfirmEmail(string token, string username)
         {
             User user;
@@ -142,6 +143,7 @@ namespace NextVer.Infrastructure.Repositories
 
             return true;
         }
+
         public async Task<bool> ChangeEmail(EmailForChange emailForChange)
         {
             var user = await GetById(emailForChange.Id);
@@ -208,6 +210,7 @@ namespace NextVer.Infrastructure.Repositories
 
             return true;
         }
+
         private static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
             using var hmac = new HMACSHA512();
@@ -227,6 +230,7 @@ namespace NextVer.Infrastructure.Repositories
             user.ConfirmationToken = TokenGenerator.GenerateToken();
             user.ConfirmationTokenGeneratedTime = DateTime.UtcNow;
         }
+
         public async Task<User> GetById(int userId)
         {
             try
@@ -241,6 +245,7 @@ namespace NextVer.Infrastructure.Repositories
                 return null;
             }
         }
+
         public async Task<bool> Update(User user)
         {
             try
@@ -254,6 +259,7 @@ namespace NextVer.Infrastructure.Repositories
                 return false;
             }
         }
+
         public async Task CheckEmailConfirmationStatus(int userId)
         {
             var user = await GetById(userId);
@@ -271,11 +277,13 @@ namespace NextVer.Infrastructure.Repositories
                 await Update(user);
             }
         }
+
         public bool IsActivationLinkExpired(User user)
         {
             var interval = DateTime.UtcNow - user.ConfirmationTokenGeneratedTime;
             return interval.Hours >= ExpirationTimeInHours;
         }
+
         public async Task<bool> CheckAndRenewActivationLink(User user)
         {
             bool isLinkExpired = IsActivationLinkExpired(user);
@@ -286,10 +294,10 @@ namespace NextVer.Infrastructure.Repositories
                 _context.Users.Update(user);
                 await _context.SaveChangesAsync();
 
-                return true; // Wygenerowano nowy link aktywacyjny
+                return true;
             }
 
-            return false; // Link aktywacyjny jest wciąż aktywny lub użytkownik jest już zweryfikowany
+            return false;
         }
     }
 }
