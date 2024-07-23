@@ -158,5 +158,102 @@
     "ProductionTypeId": 1,
     "RatingValue": 2,
     "CreatedAt": "2022-10-01T13:45:00"
+  },
+  {
+    "UserId": 1,
+    "RatingCategoryId": 1,
+    "IdMovieTVSerieGame": 1,
+    "ProductionTypeId": 1,
+    "RatingValue": 1,
+    "CreatedAt": "2022-01-01T12:00:00"
+  },
+
+  {
+    "UserId": 1,
+    "RatingCategoryId": 1,
+    "IdMovieTVSerieGame": 1,
+    "ProductionTypeId": 1,
+    "RatingValue": 4,
+    "CreatedAt": "2022-01-01T12:00:00"
+  },
+  {
+    "UserId": 1,
+    "RatingCategoryId": 1,
+    "IdMovieTVSerieGame": 1,
+    "ProductionTypeId": 1,
+    "RatingValue": 4,
+    "CreatedAt": "2022-01-01T12:00:00"
+  },
+  {
+    "UserId": 1,
+    "RatingCategoryId": 1,
+    "IdMovieTVSerieGame": 1,
+    "ProductionTypeId": 1,
+    "RatingValue": 4,
+    "CreatedAt": "2022-01-01T12:00:00"
+  },
+  {
+    "UserId": 1,
+    "RatingCategoryId": 1,
+    "IdMovieTVSerieGame": 1,
+    "ProductionTypeId": 1,
+    "RatingValue": 5,
+    "CreatedAt": "2022-01-01T12:00:00"
+  },
+  {
+    "UserId": 1,
+    "RatingCategoryId": 1,
+    "IdMovieTVSerieGame": 1,
+    "ProductionTypeId": 1,
+    "RatingValue": 4,
+    "CreatedAt": "2022-01-01T12:00:00"
+  },
+  {
+    "UserId": 1,
+    "RatingCategoryId": 1,
+    "IdMovieTVSerieGame": 1,
+    "ProductionTypeId": 1,
+    "RatingValue": 2,
+    "CreatedAt": "2022-01-01T12:00:00"
+  },
+  {
+    "UserId": 1,
+    "RatingCategoryId": 1,
+    "IdMovieTVSerieGame": 2,
+    "ProductionTypeId": 1,
+    "RatingValue": 4,
+    "CreatedAt": "2022-01-01T12:00:00"
+  },
+  {
+    "UserId": 1,
+    "RatingCategoryId": 1,
+    "IdMovieTVSerieGame": 2,
+    "ProductionTypeId": 1,
+    "RatingValue": 4,
+    "CreatedAt": "2022-01-01T12:00:00"
+  },
+  {
+    "UserId": 1,
+    "RatingCategoryId": 1,
+    "IdMovieTVSerieGame": 2,
+    "ProductionTypeId": 1,
+    "RatingValue": 5,
+    "CreatedAt": "2022-01-01T12:00:00"
+  },
+  {
+    "UserId": 1,
+    "RatingCategoryId": 1,
+    "IdMovieTVSerieGame": 2,
+    "ProductionTypeId": 1,
+    "RatingValue": 4,
+    "CreatedAt": "2022-01-01T12:00:00"
+  },
+  {
+    "UserId": 1,
+    "RatingCategoryId": 1,
+    "IdMovieTVSerieGame": 2,
+    "ProductionTypeId": 1,
+    "RatingValue": 2,
+    "CreatedAt": "2022-01-01T12:00:00"
   }
 ]
