@@ -84,5 +84,15 @@ namespace NextVerBackend.Controllers
             var notificationType = await _notificationTypeRepository.GetById(notificationTypeId);
             return Ok(notificationType);
         }
+
+        [AllowAnonymous]
+        [HttpGet("search")]
+        [ProducesResponseType(typeof(IEnumerable<NotificationType>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> SearchNotificationTypes(string name)
+        {
+            var result = await _notificationTypeRepository.GetEntitiesBy<NotificationType>(m => m.Name.Contains(name));
+            return result != null ? Ok(result) : StatusCode((int)HttpStatusCode.InternalServerError);
+        }
     }
 }

@@ -74,6 +74,21 @@ namespace NextVerBackend.Controllers
             return result ? Ok() : StatusCode((int)HttpStatusCode.InternalServerError);
         }
 
+        [HttpGet]
+        [AllowAnonymous]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GeReleasePlaces()
+        {
+            var releasePlaces = await _releasePlaceRepository.GetAll();
+
+            if (releasePlaces == null || !releasePlaces.Any())
+                return BadRequest("Could not find any genres");
+
+            return Ok(releasePlaces);
+        }
+
         [HttpGet("{releasePlaceId}/details")]
         [AllowAnonymous]
         [ProducesResponseType((int)HttpStatusCode.OK)]
@@ -83,6 +98,16 @@ namespace NextVerBackend.Controllers
         {
             var releasePlace = await _releasePlaceRepository.GetById(releasePlaceId);
             return Ok(releasePlace);
+        }
+
+        [AllowAnonymous]
+        [HttpGet("search")]
+        [ProducesResponseType(typeof(IEnumerable<ReleasePlace>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> SearchReleasePlaces(string name)
+        {
+            var result = await _releasePlaceRepository.GetEntitiesBy<ReleasePlace>(m => m.Name.Contains(name));
+            return result != null ? Ok(result) : StatusCode((int)HttpStatusCode.InternalServerError);
         }
     }
 }

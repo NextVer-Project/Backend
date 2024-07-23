@@ -83,12 +83,22 @@ namespace NextVerBackend.Controllers
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         public async Task<IActionResult> GetGenres()
         {
-            var universes = await _genreRepository.GetAll();
+            var genres = await _genreRepository.GetAll();
 
-            if (universes == null || !universes.Any())
+            if (genres == null || !genres.Any())
                 return BadRequest("Could not find any genres");
 
-            return Ok(universes);
+            return Ok(genres);
+        }
+
+        [AllowAnonymous]
+        [HttpGet("search")]
+        [ProducesResponseType(typeof(IEnumerable<Genre>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> SearchGenres(string name)
+        {
+            var result = await _genreRepository.GetEntitiesBy<Genre>(m => m.Name.Contains(name));
+            return result != null ? Ok(result) : StatusCode((int)HttpStatusCode.InternalServerError);
         }
     }
 }

@@ -90,5 +90,15 @@ namespace NextVerBackend.Controllers
 
             return Ok(universes);
         }
+
+        [AllowAnonymous]
+        [HttpGet("search")]
+        [ProducesResponseType(typeof(IEnumerable<Universe>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> SearchUniverses(string name)
+        {
+            var result = await _universeRepository.GetEntitiesBy<Universe>(m => m.Name.Contains(name));
+            return result != null ? Ok(result) : StatusCode((int)HttpStatusCode.InternalServerError);
+        }
     }
 }

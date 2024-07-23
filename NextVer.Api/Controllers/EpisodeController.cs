@@ -132,5 +132,15 @@ namespace NextVerBackend.Controllers
                 await _tvShowRepository.Update(tvShow);
             }
         }
+
+        [AllowAnonymous]
+        [HttpGet("search")]
+        [ProducesResponseType(typeof(IEnumerable<Episode>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> SearchEpisodes(string name)
+        {
+            var result = await _episodeRepository.GetEntitiesBy<Episode>(m => m.Title.Contains(name));
+            return result != null ? Ok(result) : StatusCode((int)HttpStatusCode.InternalServerError);
+        }
     }
 }

@@ -84,5 +84,15 @@ namespace NextVerBackend.Controllers
             var mediaGalleryType = await _mediaGalleryTypeRepository.GetById(mediaGalleryTypeId);
             return Ok(mediaGalleryType);
         }
+
+        [AllowAnonymous]
+        [HttpGet("search")]
+        [ProducesResponseType(typeof(IEnumerable<MediaGalleryType>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> SearchMediaGalleryTypes(string name)
+        {
+            var result = await _mediaGalleryTypeRepository.GetEntitiesBy<MediaGalleryType>(m => m.Name.Contains(name));
+            return result != null ? Ok(result) : StatusCode((int)HttpStatusCode.InternalServerError);
+        }
     }
 }

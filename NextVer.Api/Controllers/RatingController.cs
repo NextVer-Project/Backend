@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using NextVer.Domain.DTOs;
 using NextVer.Domain.Models;
 using NextVer.Infrastructure.Interfaces;
+using NextVerBackend.Enums;
 using NextVerBackend.Helpers;
 using System.Net;
 
@@ -14,10 +15,11 @@ namespace NextVerBackend.Controllers
     [ApiController]
     public class RatingController : ControllerBase
     {
-        private readonly IBaseRepository<Rating> _ratingRepository;
+        private readonly IBaseRepository<Rating> _ratingBaseRepository;
+        private readonly IRatingRepository _ratingRepository;
         private readonly IMapper _mapper;
 
-        public RatingController(IBaseRepository<Rating> ratingRepository, IMapper mapper)
+        public RatingController(IRatingRepository ratingRepository, IMapper mapper)
         {
             _ratingRepository = ratingRepository;
             _mapper = mapper;
@@ -40,7 +42,7 @@ namespace NextVerBackend.Controllers
             rating.UserId = userId;
             rating.CreatedAt = DateTime.UtcNow;
 
-            var result = await _ratingRepository.Add(rating);
+            var result = await _ratingBaseRepository.Add(rating);
 
             if (!result)
                 return StatusCode((int)HttpStatusCode.InternalServerError);
@@ -57,7 +59,7 @@ namespace NextVerBackend.Controllers
             if (!AuthorizationHelper.IsAuthorizedForEditing(User))
                 return StatusCode((int)HttpStatusCode.Unauthorized);
 
-            var result = await _ratingRepository.Edit(ratingForEdit.Id, ratingForEdit);
+            var result = await _ratingBaseRepository.Edit(ratingForEdit.Id, ratingForEdit);
 
             return result ? Ok() : StatusCode((int)HttpStatusCode.InternalServerError);
         }
@@ -72,7 +74,7 @@ namespace NextVerBackend.Controllers
             if (!AuthorizationHelper.IsAuthorizedForDeletion(User))
                 return StatusCode((int)HttpStatusCode.Unauthorized);
 
-            var result = await _ratingRepository.Delete(id);
+            var result = await _ratingBaseRepository.Delete(id);
 
             return result ? Ok() : StatusCode((int)HttpStatusCode.InternalServerError);
         }
@@ -84,8 +86,56 @@ namespace NextVerBackend.Controllers
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         public async Task<IActionResult> GetRatingById(int ratingId)
         {
-            var rating = await _ratingRepository.GetById(ratingId);
+            var rating = await _ratingBaseRepository.GetById(ratingId);
             return Ok(rating);
+        }
+
+        [HttpGet("averageMovie/{movieId}")]
+        [AllowAnonymous]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetAverageMovieRating(int movieId)
+        {
+            var averageRating = await _ratingRepository.GetAverageRating(movieId, (int)ProductionTypes.Movie);
+
+            return Ok(averageRating);
+        }
+
+        [HttpGet("ratingCountMovie/{movieId}")]
+        [AllowAnonymous]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetMovieRatingCount(int movieId)
+        {
+            var ratingCount = await _ratingRepository.GetRatingCount(movieId, (int)ProductionTypes.Movie);
+
+            return Ok(ratingCount);
+        }
+
+        [HttpGet("averageTvShow/{tvShowId}")]
+        [AllowAnonymous]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetAverageTvShowRating(int tvShowId)
+        {
+            var averageRating = await _ratingRepository.GetAverageRating(tvShowId, (int)ProductionTypes.TvShow);
+
+            return Ok(averageRating);
+        }
+
+        [HttpGet("ratingCountTvShow/{tvShowId}")]
+        [AllowAnonymous]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> GetTvShowRatingCount(int tvShowId)
+        {
+            var ratingCount = await _ratingRepository.GetRatingCount(tvShowId, (int)ProductionTypes.TvShow);
+
+            return Ok(ratingCount);
         }
     }
 }

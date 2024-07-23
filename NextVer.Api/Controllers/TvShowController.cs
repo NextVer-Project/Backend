@@ -258,34 +258,39 @@ namespace NextVerBackend.Controllers
             return Ok(tvShows);
         }
 
-        [HttpGet("tvShows/genre/{genreId}")]
+        [AllowAnonymous]
+        [HttpGet("genre/{genreId}")]
         public async Task<IActionResult> GetTvShowsByGenre(int genreId)
         {
             var tvShows = await _tvShowRepository.GetEntitiesBy<TvShow>(m => m.TvShowGenres.Any(mg => mg.GenreId == genreId));
             return Ok(tvShows);
         }
 
-        [HttpGet("tvShows/{tvShowId}/genres")]
+        [AllowAnonymous]
+        [HttpGet("{tvShowId}/genres")]
         public async Task<IActionResult> GetGenresByTvShow(int tvShowId)
         {
             var genres = await _tvShowRepository.GetEntitiesBy<Genre>(m => m.TvShowGenres.Any(mu => mu.TvShowId == tvShowId));
             return Ok(genres);
         }
 
-        [HttpGet("tvShows/universe/{universeId}")]
+        [AllowAnonymous]
+        [HttpGet("universe/{universeId}")]
         public async Task<IActionResult> GetTvShowsByUniverse(int universeId)
         {
             var tvShows = await _tvShowRepository.GetEntitiesBy<TvShow>(m => m.TvShowUniverses.Any(mu => mu.UniverseId == universeId));
             return Ok(tvShows);
         }
 
-        [HttpGet("tvShows/{tvShowId}/universes")]
+        [AllowAnonymous]
+        [HttpGet("{tvShowId}/universes")]
         public async Task<IActionResult> GetUniversesByTvShow(int tvShowId)
         {
             var universes = await _tvShowRepository.GetEntitiesBy<Universe>(m => m.TvShowUniverses.Any(mu => mu.TvShowId == tvShowId));
             return Ok(universes);
         }
 
+        [AllowAnonymous]
         [HttpGet("search")]
         [ProducesResponseType(typeof(IEnumerable<TvShow>), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
@@ -339,6 +344,14 @@ namespace NextVerBackend.Controllers
             Response.AddPaginationHeader(tvShows.CurrentPage, tvShows.PageSize, tvShows.TotalCount, tvShows.TotalPages);
 
             return Ok(tvShows);
+        }
+
+        [AllowAnonymous]
+        [HttpGet("{tvShowId}")]
+        public async Task<IActionResult> GetTvShowById(int tvShowId)
+        {
+            var tvShow = await _tvShowRepository.GetById(tvShowId);
+            return Ok(tvShow);
         }
     }
 }

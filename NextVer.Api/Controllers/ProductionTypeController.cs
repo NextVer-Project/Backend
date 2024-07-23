@@ -84,5 +84,15 @@ namespace NextVerBackend.Controllers
             var productionType = await _productionTypeRepository.GetById(productionTypeId);
             return Ok(productionType);
         }
+
+        [AllowAnonymous]
+        [HttpGet("search")]
+        [ProducesResponseType(typeof(IEnumerable<ProductionType>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> SearchProductionTypes(string name)
+        {
+            var result = await _productionTypeRepository.GetEntitiesBy<ProductionType>(m => m.Name.Contains(name));
+            return result != null ? Ok(result) : StatusCode((int)HttpStatusCode.InternalServerError);
+        }
     }
 }

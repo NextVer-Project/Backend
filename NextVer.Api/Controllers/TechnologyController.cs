@@ -95,5 +95,15 @@ namespace NextVerBackend.Controllers
             var technologies = await _technologyRepository.GetAll();
             return Ok(technologies);
         }
+
+        [AllowAnonymous]
+        [HttpGet("search")]
+        [ProducesResponseType(typeof(IEnumerable<Technology>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> SearchTechnologys(string name)
+        {
+            var result = await _technologyRepository.GetEntitiesBy<Technology>(m => m.Name.Contains(name));
+            return result != null ? Ok(result) : StatusCode((int)HttpStatusCode.InternalServerError);
+        }
     }
 }

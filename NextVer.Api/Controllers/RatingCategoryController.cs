@@ -84,5 +84,15 @@ namespace NextVerBackend.Controllers
             var ratingCategory = await _ratingCategoryRepository.GetById(ratingCategoryId);
             return Ok(ratingCategory);
         }
+
+        [AllowAnonymous]
+        [HttpGet("search")]
+        [ProducesResponseType(typeof(IEnumerable<RatingCategory>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> SearchRatingCategorys(string name)
+        {
+            var result = await _ratingCategoryRepository.GetEntitiesBy<RatingCategory>(m => m.Name.Contains(name));
+            return result != null ? Ok(result) : StatusCode((int)HttpStatusCode.InternalServerError);
+        }
     }
 }

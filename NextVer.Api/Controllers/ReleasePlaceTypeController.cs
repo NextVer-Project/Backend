@@ -84,5 +84,15 @@ namespace NextVerBackend.Controllers
             var releasePlaceType = await _releasePlaceTypeRepository.GetById(releasePlaceTypeId);
             return Ok(releasePlaceType);
         }
+
+        [AllowAnonymous]
+        [HttpGet("search")]
+        [ProducesResponseType(typeof(IEnumerable<ReleasePlaceType>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> SearchReleasePlaceTypes(string name)
+        {
+            var result = await _releasePlaceTypeRepository.GetEntitiesBy<ReleasePlaceType>(m => m.Name.Contains(name));
+            return result != null ? Ok(result) : StatusCode((int)HttpStatusCode.InternalServerError);
+        }
     }
 }

@@ -84,5 +84,15 @@ namespace NextVerBackend.Controllers
             var userType = await _userTypeRepository.GetById(userTypeId);
             return Ok(userType);
         }
+
+        [AllowAnonymous]
+        [HttpGet("search")]
+        [ProducesResponseType(typeof(IEnumerable<UserType>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> SearchUserTypes(string name)
+        {
+            var result = await _userTypeRepository.GetEntitiesBy<UserType>(m => m.Name.Contains(name));
+            return result != null ? Ok(result) : StatusCode((int)HttpStatusCode.InternalServerError);
+        }
     }
 }
