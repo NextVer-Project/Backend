@@ -121,7 +121,7 @@ namespace NextVerBackend.Controllers
                 });
         }
 
-        [HttpGet("confirmEmail")]
+        /*[HttpGet("confirmEmail")]
         [ProducesResponseType(typeof(string), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
@@ -130,7 +130,26 @@ namespace NextVerBackend.Controllers
             var result = await _authRepository.ConfirmEmail(token, username);
 
             return result ? Ok("Email confirmed.") : Unauthorized("Verification link is not valid.");
+        }*/
+
+        [HttpGet("confirmEmail")]
+        [ProducesResponseType((int)HttpStatusCode.Redirect)]
+        [ProducesResponseType((int)HttpStatusCode.Unauthorized)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<IActionResult> ConfirmEmail(string token, string username)
+        {
+            var result = await _authRepository.ConfirmEmail(token, username);
+
+            if (result)
+            {
+                return Redirect($"http://localhost:4200/confirm-email?message=Email%20confirmed.");
+            }
+            else
+            {
+                return Redirect($"http://localhost:4200/confirm-email?message=Verification%20link%20is%20not%20valid.");
+            }
         }
+
 
         private async Task<bool> SendEmail(User user)
         {
