@@ -34,6 +34,7 @@ namespace NextVerBackend.Configuration
             services.AddScoped<IBaseRepository<UserCollectionType>, BaseRepository<UserCollectionType>>();
             services.AddScoped<IBaseRepository<UserCollection>, BaseRepository<UserCollection>>();
             services.AddScoped<IBaseRepository<UserType>, BaseRepository<UserType>>();
+            services.AddScoped<IRatingRepository, RatingRepository>();
 
             services.AddScoped<ISmtpClient, SmtpClient>();
             services.AddScoped<IEmailService, EmailService>();
