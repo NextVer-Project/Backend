@@ -3,4 +3,4 @@
 - 🔧 The app provides admin functionalities with CRUD operations.
 - 🌐 Communication is handled via a Web API, with Swagger used to create clear documentation.
 - 💾 MSSQL is used as the database management system, with the database being hosted in a Docker container.
-- 🔗 The frontend part of NextVer app: https://github.com/NextVer-Project/Frontend
+- 🔗 The frontend part of NextVer app: [Frontend Repository](https://github.com/NextVer-Project/Frontend/)
